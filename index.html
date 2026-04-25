@@ -2,26 +2,67 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>SwapSpace</title>
+  <title>SwapSpace — Barter Pintar, Aman, Tanpa Batas</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header>
-    <h1>SwapSpace</h1>
+    <div class="logo">SwapSpace</div>
     <nav>
-      <a href="index.html">Katalog</a> | 
-      <a href="index.html">Cek Transaksi</a>
+      <a href="index.html">Katalog Utama</a>
+      <a href="transaksi.html">Cek Transaksi</a>
     </nav>
-  </header>
-  <hr>
-  <main>
-    <h2>Daftar Barang</h2>
-    <div id="catalog-grid">
-      <p>(Barang)</p>
+    <div class="user-menu">
+      <span id="user-balance" class="balance">Saldo: Rp 0</span>
+      <button id="btn-login-modal" class="btn-outline">Login / Daftar</button>
     </div>
+  </header>
+
+  <main>
+    <section class="toolbar">
+      <select id="filter-kategori">
+        <option value="all">Semua Kategori</option>
+        <option value="Elektronik">Elektronik</option>
+        <option value="Olahraga">Olahraga</option>
+        <option value="Fashion">Fashion</option>
+      </select>
+      <button class="btn-outline">+ Unggah Barang Baru</button>
+    </section>
+
+    <div id="catalog-grid" class="grid-container"></div>
   </main>
-  
+
+  <div id="modal-auth" class="modal hidden">
+    <div class="modal-content">
+      <h2>Masuk ke SwapSpace</h2>
+      <input type="email" placeholder="Email Anda" id="auth-email">
+      <input type="password" placeholder="Password Baru/Lama">
+      <input type="text" placeholder="No HP untuk Recovery (Opsional)">
+      <button id="btn-get-otp" class="btn-primary">Kirim Kode OTP</button>
+      
+      <div id="otp-section" class="hidden">
+        <p><small>Cek notifikasi untuk kode OTP simulasi</small></p>
+        <input type="text" id="auth-otp" placeholder="Masukkan 4 Digit OTP" maxlength="4">
+        <button id="btn-verify-otp" class="btn-primary">Verifikasi & Masuk</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-checkout" class="modal hidden">
+    <div class="modal-content">
+      <h2>Konfirmasi Pertukaran</h2>
+      <div id="checkout-info" class="info-box"></div>
+      <button onclick="processSwap()" class="btn-primary">Kirim Penawaran</button>
+      <button onclick="closeCheckout()" class="btn-outline" style="margin-top:10px;">Batal</button>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
   <script src="js/data.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/checkout.js"></script>
 </body>
 </html>
