@@ -1,8 +1,17 @@
+# SwapSpace — Hybrid Marketplace Platform
 
+**Barter Pintar, Aman, dan Tanpa Batas.**
 
-## SwapSpace
+SwapSpace adalah platform marketplace inovatif yang menggabungkan konsep barter tradisional dengan kemudahan transaksi digital. Platform ini memungkinkan pengguna untuk melakukan tukar barang, tukar tambah (dengan fitur Auto Top-Up), dan jual beli standar.
 
-is a website where people can exchange items with one another. Think of it as a modern, online version of a flea market where the "currency" is the items you have at home. This project is developed collaboratively via GitHub to allow the instructor to transparently monitor team cooperation.
-#
-adalah sebuah website tempat orang bisa saling tukar-menukar barang. Bayangkan seperti pasar loak, tapi versinya online dan modern; di sini "alat tukarnya" adalah barang yang kamu punya di rumah. Proyek ini dikerjakan secara berkelompok melalui GitHub agar dosen bisa melihat kerja sama tim secara transparan.
+## Fitur Unggulan
+* **SwapPoint:** Algoritma pintar penentu selisih harga.
+* **SwapSafe:** Simulasi keamanan transaksi.
+* **SwapTrack:** Sistem riwayat dan pemantauan transaksi.
 
+## Tim Pengembang (Kelompok 1)
+* Aldo Prawiro Akbar (007) - Lead Architect
+* Abdil Fawasta Rasyadan (013) - Security & UI
+* Faiz Abdan Nirwana (018) - Transaction Logic
+* Ibrahim (019) - Content Management
+* Indra Nur Wahyu Saputra (026) - Experience Enhancer
