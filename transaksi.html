@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Riwayat Transaksi - SwapSpace</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header>
     <div class="logo">SwapSpace</div>
-    <nav><a href="index.html">← Kembali ke Katalog</a></nav>
+    <nav>
+      <a href="index.html">← Kembali ke Katalog</a>
+    </nav>
   </header>
+
   <main style="padding: 30px;">
-    <h2>Status Penawaran Kamu</h2>
-    <div class="card" style="width: 100%;">
-      <p>🟡 <strong>[Menunggu Balasan]</strong> Kamu menawar Kamera Sony A6000 dengan Jaket Kulit + Top-Up Rp 2.400.000.</p>
-    </div>
-    <div class="card" style="width: 100%;">
-      <p>🟢 <strong>[Berhasil Swap]</strong> Sepeda Lipat ditukar dengan Lensa Kamera.</p>
+    <div style="max-width: 800px; margin: 0 auto;">
+      <h2>📦 SwapTrack Dashboard</h2>
+      <p>Pantau status pertukaran barang kamu di sini.</p>
+      
+      <div id="list-transaksi">
+        <p style="text-align:center; padding:20px;">Loading...</p>
+      </div>
     </div>
   </main>
+
+  <script src="js/toast.js"></script>
+  <script src="js/track.js"></script>
 </body>
 </html>

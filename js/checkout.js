@@ -70,11 +70,43 @@ function closeCheckout() {
 }
 
 function processSwap() {
-    alert("Hebat! Penawaran berhasil dikirim ke pemilik barang."); 
+    // 1. Ambil data barang yang akan ditukar
+    const namaBarang = itemTujuan.nama;
+    const hargaBarang = itemTujuan.harga;
+    
+    // 2. SIMPAN KE SISTEM TRACKING
+    if (typeof simpanTransaksi === 'function') {
+        simpanTransaksi(namaBarang, hargaBarang);
+        console.log('✅ Transaksi disimpan ke SwapTrack:', namaBarang);
+    } else {
+        // Fallback: simpan manual ke localStorage jika fungsi belum ada
+        let data = JSON.parse(localStorage.getItem('swapData')) || [];
+        data.push({
+            id: 'TRX-' + Date.now(),
+            barang: namaBarang,
+            harga: hargaBarang,
+            status: 'Menunggu',
+            tanggal: new Date().toLocaleDateString('id-ID')
+        });
+        localStorage.setItem('swapData', JSON.stringify(data));
+        console.log('✅ Transaksi disimpan (manual):', namaBarang);
+    }
+    
+    // 3. Tampilkan toast notification
+    if (typeof showToast === 'function') {
+        showToast(`Penawaran untuk ${namaBarang} berhasil dikirim!`, 'success');
+    } else {
+        alert('Penawaran berhasil dikirim!');
+    }
+    
     closeCheckout();
     
-    // Bersihkan data setelah transaksi selesai dan kembali ke awal
+    // 4. Bersihkan data temporary
     localStorage.removeItem('itemSwap'); 
     localStorage.removeItem('itemTujuan'); 
-    window.location.href = 'index.html'; 
+    
+    // 5. Redirect ke halaman transaksi
+    setTimeout(() => {
+        window.location.href = 'transaksi.html';
+    }, 1500);
 }

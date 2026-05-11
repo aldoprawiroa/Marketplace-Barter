@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Riwayat Transaksi - SwapSpace</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">SwapSpace</div>
+    <nav>
+      <a href="index.html">Katalog Utama</a>
+      <a href="riwayat.html" class="active">Cek Transaksi</a>
+    </nav>
+    <div class="user-menu">
+      <span id="user-balance" class="balance">Saldo: Rp 0</span>
+      <button id="btn-login-modal" class="btn-outline">Login / Daftar</button>
+    </div>
+  </header>
+
+  <main style="padding: 30px;">
+    <div style="max-width: 1000px; margin: 0 auto;">
+      <h1 style="margin-bottom:10px;">📦 SwapTrack Dashboard</h1>
+      <p style="color:#6b7280; margin-bottom:30px;">Pantau status barter dan transaksi Anda secara real-time.</p>
+      
+      <!-- Filter Buttons -->
+      <div style="margin-bottom:20px;">
+        <button style="padding:8px 16px; border:1px solid #3b82f6; background:white; color:#3b82f6; border-radius:6px; cursor:pointer; margin-right:10px;">Semua</button>
+        <button style="padding:8px 16px; border:1px solid #3b82f6; background:#eff6ff; color:#3b82f6; border-radius:6px; cursor:pointer; margin-right:10px;">Menunggu</button>
+        <button style="padding:8px 16px; border:1px solid #3b82f6; background:white; color:#3b82f6; border-radius:6px; cursor:pointer;">Sukses</button>
+      </div>
+      
+      <!-- Tabel Transaksi -->
+      <div style="background:white; border-radius:12px; padding:20px; box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+        <table style="width:100%; border-collapse:collapse;">
+          <thead>
+            <tr style="background:#f9fafb; border-bottom:2px solid #e5e7eb;">
+              <th style="padding:12px; text-align:left; font-weight:600; color:#374151;">ID Transaksi</th>
+              <th style="padding:12px; text-align:left; font-weight:600; color:#374151;">Item / Tanggal</th>
+              <th style="padding:12px; text-align:left; font-weight:600; color:#374151;">Nilai Estimasi</th>
+              <th style="padding:12px; text-align:left; font-weight:600; color:#374151;">Status</th>
+              <th style="padding:12px; text-align:left; font-weight:600; color:#374151;">Aksi (Simulasi)</th>
+            </tr>
+          </thead>
+          <tbody id="transaction-body">
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/toast.js"></script>
+  <script src="js/track.js"></script>
+</body>
+</html>
