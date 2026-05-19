@@ -1,27 +1,17 @@
-# SwapSpace - Marketplace Barter Demo
+# SwapSpace — Hybrid Marketplace Platform
 
-SwapSpace adalah website marketplace barter sederhana untuk proyek akhir semester. Website ini dibuat dengan HTML, CSS, dan JavaScript vanilla agar mudah dibaca, dijelaskan, dan dijalankan melalui GitHub Pages.
+**Barter Pintar, Aman, dan Tanpa Batas.**
 
-## Fitur
+SwapSpace adalah platform marketplace inovatif yang menggabungkan konsep barter tradisional dengan kemudahan transaksi digital. Platform ini memungkinkan pengguna untuk melakukan tukar barang, tukar tambah (dengan fitur Auto Top-Up), dan jual beli standar.
 
-- Katalog barang dengan pencarian dan filter kategori.
-- Simulasi login menggunakan kode OTP demo.
-- Upload barang lokal dengan validasi form dan preview gambar.
-- Alur barter: pilih barang tujuan, pilih barang milik pengguna, konfirmasi biaya, lalu simpan transaksi.
-- Riwayat transaksi dengan filter status.
-- Profil pengguna dengan saldo demo, daftar barang, ringkasan transaksi, logout, dan reset data demo.
+## Fitur Unggulan
+* **SwapPoint:** Algoritma pintar penentu selisih harga.
+* **SwapSafe:** Simulasi keamanan transaksi.
+* **SwapTrack:** Sistem riwayat dan pemantauan transaksi.
 
-## Teknologi
-
-- HTML vanilla
-- CSS vanilla
-- JavaScript vanilla
-- `localStorage` untuk menyimpan data simulasi di browser
-
-## Tim Pengembang
-
-- Aldo Prawiro Akbar (007)
-- Abdil Fawasta Rasyadan (013)
-- Faiz Abdan Nirwana (018)
-- Ibrahim (019)
-- Indra Nur Wahyu Saputra (026)
+## Tim Pengembang (Kelompok 1)
+* Aldo Prawiro Akbar (007) - Lead Architect
+* Abdil Fawasta Rasyadan (013) - Security & UI
+* Faiz Abdan Nirwana (018) - Transaction Logic
+* Ibrahim (019) - Content Management
+* Indra Nur Wahyu Saputra (026) - Experience Enhancer
