@@ -72,6 +72,7 @@
             position: relative;
         }
 
+        /* Menambahkan ikon koin fiktif untuk SwapPoint */
         .swappoint-input input {
             padding-left: 40px;
         }
@@ -118,44 +119,39 @@
     <div class="container">
         <h2>📦 Upload Barang</h2>
 
-        <form id="formUpload" action="#" method="POST" enctype="multipart/form-data">
+        <form action="#" method="POST" enctype="multipart/form-data">
             
             <div class="form-group">
                 <label>Nama Barang</label>
-                <input type="text" id="nama_barang" name="nama_barang" placeholder="Contoh: Kamera Mirrorless" required>
+                <input type="text" name="nama_barang" placeholder="Contoh: Kamera Mirrorless" required>
             </div>
 
             <div class="form-group">
                 <label>Kategori</label>
-                <select id="kategori" name="kategori" required>
+                <select name="kategori" required>
                     <option value="" disabled selected>Pilih Kategori</option>
-                    <option value="Elektronik">Elektronik</option>
-                    <option value="Fashion">Fashion</option>
-                    <option value="Olahraga">Olahraga</option>
-                    <option value="Lain-lain">Lain-lain</option>
+                    <option value="elektronik">Elektronik</option>
+                    <option value="fashion">Fashion</option>
+                    <option value="hobi">Hobi & Koleksi</option>
+                    <option value="lainnya">Lain-lain</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label>Berat Barang (Gram)</label>
-                <input type="number" id="berat" name="berat" placeholder="Contoh: 1000" required>
+                <label>Deskripsi Kondisi</label>
+                <textarea name="deskripsi" placeholder="Jelaskan detail kondisi barang..."></textarea>
             </div>
 
             <div class="form-group">
                 <label>Estimasi Nilai (SwapPoint)</label>
                 <div class="swappoint-input">
-                    <input type="number" id="harga" name="estimasi_nilai" placeholder="Contoh: 500" min="1" required>
+                    <input type="number" name="estimasi_nilai" placeholder="Contoh: 500" min="1" required>
                 </div>
             </div>
 
             <div class="form-group">
-                <label>Deskripsi Kondisi</label>
-                <textarea id="deskripsi" name="deskripsi" placeholder="Jelaskan detail kondisi barang..."></textarea>
-            </div>
-
-            <div class="form-group">
                 <label>Foto Barang</label>
-                <input type="file" id="foto_barang" name="foto_barang" accept="image/*" required>
+                <input type="file" name="foto_barang" accept="image/*" required>
             </div>
 
             <button type="submit">Unggah ke SwapPoint</button>
