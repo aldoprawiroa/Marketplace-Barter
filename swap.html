@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SwapSpace - Swap</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- FAIZ ABDAN NIRWANA - SWAP & CHECKOUT -->
+  <header class="site-header">
+    <div class="container header-content">
+      <a class="brand" href="index.html">SwapSpace</a>
+      <nav class="main-nav" aria-label="Navigasi utama">
+        <a href="index.html">Katalog</a>
+        <a href="login.html">Login</a>
+        <a href="upload.html">Upload</a>
+        <a class="active" href="swap.html">Swap</a>
+        <a href="track.html">Tracking</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page">
+    <section class="page-heading">
+      <p class="eyebrow">Checkout Swap</p>
+      <h1>Ajukan penawaran tukar barang</h1>
+      <p>Pilih barang milik kamu, cek selisih harga dan biaya layanan, lalu kirim pengajuan swap.</p>
+    </section>
+
+    <section class="two-column swap-layout">
+      <div class="panel">
+        <h2>Barang Tujuan</h2>
+        <div id="selectedItemBox" class="selected-item-box"></div>
+      </div>
+
+      <div class="panel">
+        <h2>Pilih Barang Penawaran</h2>
+        <div id="userItemOptions" class="radio-list"></div>
+      </div>
+    </section>
+
+    <section class="panel checkout-panel">
+      <h2>Ringkasan Checkout</h2>
+      <div id="checkoutSummary" class="checkout-summary"></div>
+      <button id="submitSwapButton" class="button primary" type="button" disabled>Ajukan Swap</button>
+    </section>
+
+    <div id="swapMessage" class="message" role="status" aria-live="polite"></div>
+  </main>
+
+  <footer class="site-footer">
+    <p>SwapSpace - Simulasi barter barang mahasiswa berbasis localStorage.</p>
+  </footer>
+
+  <script src="js/utils.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/swap.js"></script>
+</body>
+</html>
