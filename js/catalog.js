@@ -1,25 +1,32 @@
 /* ALDO PRAWIRO AKBAR - KATALOG & SEARCH */
 
+// State sederhana untuk katalog
 var catalogState = {
   searchText: "",
-  category: "all"
+  category: "all",
 };
 
+// Jalankan setelah HTML selesai dibaca browser
 document.addEventListener("DOMContentLoaded", function () {
   renderCategoryOptions();
   renderCatalog();
 
-  document.getElementById("searchInput").addEventListener("input", function (event) {
-    catalogState.searchText = event.target.value.toLowerCase();
-    renderCatalog();
-  });
+  document
+    .getElementById("searchInput")
+    .addEventListener("input", function (event) {
+      catalogState.searchText = event.target.value.toLowerCase();
+      renderCatalog();
+    });
 
-  document.getElementById("categoryFilter").addEventListener("change", function (event) {
-    catalogState.category = event.target.value;
-    renderCatalog();
-  });
+  document
+    .getElementById("categoryFilter")
+    .addEventListener("change", function (event) {
+      catalogState.category = event.target.value;
+      renderCatalog();
+    });
 });
 
+// Membuat pilihan kategori dari data barang
 function renderCategoryOptions() {
   var categoryFilter = document.getElementById("categoryFilter");
   var items = getMarketplaceItems();
@@ -39,69 +46,102 @@ function renderCategoryOptions() {
   });
 }
 
+// Mengambil data barang yang cocok dengan search dan filter
 function getFilteredCatalogItems() {
-  return getMarketplaceItems().filter(function (item) {
-    var text = [
-      item.name,
-      item.category,
-      item.location
-    ].join(" ").toLowerCase();
-    var matchesSearch = text.indexOf(catalogState.searchText) !== -1;
-    var matchesCategory = catalogState.category === "all" || item.category === catalogState.category;
+  var items = getMarketplaceItems();
 
-    return matchesSearch && matchesCategory;
+  return items.filter(function (item) {
+    var itemText = item.name + " " + item.category + " " + item.location;
+    var itemTextLower = itemText.toLowerCase();
+
+    var matchSearch = itemTextLower.indexOf(catalogState.searchText) !== -1;
+    var matchCategory =
+      catalogState.category === "all" ||
+      item.category === catalogState.category;
+
+    return matchSearch && matchCategory;
   });
 }
 
+// Menampilkan semua card barang katalog
 function renderCatalog() {
   var catalogList = document.getElementById("catalogList");
-  var filteredItems = getFilteredCatalogItems();
+  var items = getFilteredCatalogItems();
 
   updateCatalogSummary();
+
   catalogList.innerHTML = "";
 
-  if (filteredItems.length === 0) {
-    catalogList.innerHTML = '<div class="empty-state">Barang tidak ditemukan. Coba kata kunci atau kategori lain.</div>';
+  if (items.length === 0) {
+    catalogList.innerHTML =
+      '<div class="empty-state">Barang tidak ditemukan.</div>';
     return;
   }
 
-  filteredItems.forEach(function (item) {
-    var card = document.createElement("article");
-    var isAvailable = item.status === "Tersedia";
-    var statusClass = isAvailable ? "available" : "process";
-
-    card.className = "item-card";
-    card.innerHTML = [
-      "<h3>" + escapeHTML(item.name) + "</h3>",
-      '<span class="badge ' + statusClass + '">' + escapeHTML(item.status) + "</span>",
-      '<div class="item-meta">',
-      "<span>" + escapeHTML(item.category) + "</span>",
-      "<span>" + escapeHTML(item.condition) + "</span>",
-      "<span>" + escapeHTML(item.location) + "</span>",
-      "</div>",
-      '<div class="item-price">' + formatRupiah(item.price) + "</div>",
-      '<p class="item-description">' + escapeHTML(item.description) + "</p>",
-      '<button class="button primary" type="button" ' + (isAvailable ? "" : "disabled") + ">Ajukan Swap</button>"
-    ].join("");
-
-    if (isAvailable) {
-      card.querySelector("button").addEventListener("click", function () {
-        handleSwapClick(item);
-      });
-    }
-
+  items.forEach(function (item) {
+    var card = createCatalogCard(item);
     catalogList.appendChild(card);
   });
 }
 
+// Membuat satu card barang
+function createCatalogCard(item) {
+  var card = document.createElement("article");
+  var isAvailable = item.status === "Tersedia";
+  var statusClass = isAvailable ? "available" : "process";
+
+  card.className = "item-card";
+
+  card.innerHTML =
+    "<h3>" +
+    escapeHTML(item.name) +
+    "</h3>" +
+    '<span class="badge ' +
+    statusClass +
+    '">' +
+    escapeHTML(item.status) +
+    "</span>" +
+    '<div class="item-meta">' +
+    "<span>" +
+    escapeHTML(item.category) +
+    "</span>" +
+    "<span>" +
+    escapeHTML(item.condition) +
+    "</span>" +
+    "<span>" +
+    escapeHTML(item.location) +
+    "</span>" +
+    "</div>" +
+    '<div class="item-price">' +
+    formatRupiah(item.price) +
+    "</div>" +
+    '<p class="item-description">' +
+    escapeHTML(item.description) +
+    "</p>" +
+    '<button class="button primary" type="button"' +
+    (isAvailable ? "" : " disabled") +
+    ">Ajukan Swap</button>";
+
+  if (isAvailable) {
+    card.querySelector("button").addEventListener("click", function () {
+      handleSwapClick(item);
+    });
+  }
+
+  return card;
+}
+
+// Mengupdate angka ringkasan katalog
 function updateCatalogSummary() {
   var items = getMarketplaceItems();
-  var availableCount = items.filter(function (item) {
-    return item.status === "Tersedia";
-  }).length;
+  var availableCount = 0;
   var categories = [];
 
   items.forEach(function (item) {
+    if (item.status === "Tersedia") {
+      availableCount++;
+    }
+
     if (categories.indexOf(item.category) === -1) {
       categories.push(item.category);
     }
@@ -112,14 +152,21 @@ function updateCatalogSummary() {
   document.getElementById("totalCategories").textContent = categories.length;
 }
 
+// Ketika tombol Ajukan Swap diklik
 function handleSwapClick(item) {
   saveSelectedItem(item);
 
   if (!isLoggedIn()) {
-    showMessage("catalogMessage", "Silakan login terlebih dahulu sebelum mengajukan swap.", "info");
+    showMessage(
+      "catalogMessage",
+      "Silakan login terlebih dahulu sebelum mengajukan swap.",
+      "info",
+    );
+
     setTimeout(function () {
       window.location.href = "login.html";
     }, 700);
+
     return;
   }
 
