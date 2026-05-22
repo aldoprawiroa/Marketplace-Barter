@@ -12,8 +12,13 @@ const DEFAULT_BALANCE = 2500000;
 
 /* DEFAULT USER - ABDIL ONLY */
 const DEFAULT_USER = {
+  id: "user-001",
   name: "Mahasiswa Demo",
-  email: "demo@swapspace.local"
+  email: "demo@swapspace.local",
+  password: "password123",
+  balance: DEFAULT_BALANCE,
+  inventory: [],
+  transactions: []
 };
 
 /* MARKETPLACE ITEMS - ALDO ONLY */
