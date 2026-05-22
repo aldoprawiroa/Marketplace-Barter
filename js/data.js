@@ -5,7 +5,7 @@ const STORAGE_KEYS = {
   balance: "swapspace_balance",
   selectedItem: "swapspace_selected_item",
   userItems: "swapspace_user_items",
-  transactions: "swapspace_transactions"
+  transactions: "swapspace_transactions",
 };
 
 const DEFAULT_BALANCE = 2500000;
@@ -13,7 +13,7 @@ const DEFAULT_BALANCE = 2500000;
 /* DEFAULT USER - ABDIL ONLY */
 const DEFAULT_USER = {
   name: "Mahasiswa Demo",
-  email: "demo@swapspace.local"
+  email: "demo@swapspace.local",
 };
 
 /* MARKETPLACE ITEMS - ALDO ONLY */
@@ -23,10 +23,11 @@ const MARKETPLACE_ITEMS = [
     name: "Kamera Mirrorless Bekas",
     category: "Elektronik",
     price: 3200000,
-    condition: "Bekas mulus, shutter count rendah",
-    location: "Jakarta Selatan",
+    condition: "Bekas mulus",
+    location: "Semarang",
     status: "Tersedia",
-    description: "Kamera mirrorless cocok untuk konten tugas kampus dan dokumentasi acara."
+    description:
+      "Kamera masih normal dan cocok untuk dokumentasi tugas atau acara kampus.",
   },
   {
     id: "item-002",
@@ -34,19 +35,21 @@ const MARKETPLACE_ITEMS = [
     category: "Olahraga",
     price: 1800000,
     condition: "Bekas terawat",
-    location: "Bekasi",
+    location: "Semarang",
     status: "Tersedia",
-    description: "Sepeda lipat ringan untuk perjalanan ke kampus atau stasiun terdekat."
+    description:
+      "Sepeda lipat ringan untuk perjalanan ke kampus atau sekitar kos.",
   },
   {
     id: "item-003",
     name: "Jaket Kulit Lokal",
     category: "Fashion",
     price: 650000,
-    condition: "Bekas, warna masih pekat",
+    condition: "Bekas rapi",
     location: "Bandung",
     status: "Diproses",
-    description: "Jaket kulit lokal ukuran L, nyaman dipakai untuk motor harian."
+    description:
+      "Jaket ukuran L, warna masih bagus, cocok untuk dipakai harian.",
   },
   {
     id: "item-004",
@@ -54,10 +57,75 @@ const MARKETPLACE_ITEMS = [
     category: "Perabot",
     price: 450000,
     condition: "Bekas rapi",
-    location: "Depok",
+    location: "Semarang",
     status: "Tersedia",
-    description: "Rak buku empat tingkat untuk kos, apartemen, atau ruang belajar."
-  }
+    description:
+      "Rak buku empat tingkat untuk kamar kos, ruang belajar, atau ruang tamu.",
+  },
+  {
+    id: "item-005",
+    name: "Meja Belajar Kayu",
+    category: "Perabot",
+    price: 550000,
+    condition: "Bekas normal",
+    location: "Yogyakarta",
+    status: "Tersedia",
+    description:
+      "Meja belajar sederhana, masih kuat, cocok untuk belajar dan mengerjakan tugas.",
+  },
+  {
+    id: "item-006",
+    name: "Headset Gaming",
+    category: "Elektronik",
+    price: 350000,
+    condition: "Bekas normal",
+    location: "Semarang",
+    status: "Tersedia",
+    description:
+      "Headset dengan mikrofon, cocok untuk meeting online, game, dan kelas daring.",
+  },
+  {
+    id: "item-007",
+    name: "Buku Pemrograman Web",
+    category: "Buku",
+    price: 120000,
+    condition: "Bekas bersih",
+    location: "Solo",
+    status: "Tersedia",
+    description:
+      "Buku dasar HTML, CSS, dan JavaScript untuk belajar web dari awal.",
+  },
+  {
+    id: "item-008",
+    name: "Tas Laptop Hitam",
+    category: "Aksesoris",
+    price: 250000,
+    condition: "Bekas bersih",
+    location: "Semarang",
+    status: "Diproses",
+    description: "Tas laptop ukuran 14 inci dengan beberapa ruang penyimpanan.",
+  },
+  {
+    id: "item-009",
+    name: "Mouse Wireless",
+    category: "Elektronik",
+    price: 150000,
+    condition: "Bekas normal",
+    location: "Demak",
+    status: "Tersedia",
+    description:
+      "Mouse wireless ringan, tombol masih normal, cocok untuk laptop harian.",
+  },
+  {
+    id: "item-010",
+    name: "Lampu Meja Belajar",
+    category: "Perabot",
+    price: 90000,
+    condition: "Bekas normal",
+    location: "Semarang",
+    status: "Tersedia",
+    description: "Lampu meja kecil untuk belajar malam hari di kamar kos.",
+  },
 ];
 
 /* USER ITEMS - IBRAHIM ONLY */
@@ -69,7 +137,8 @@ const DEFAULT_USER_ITEMS = [
     price: 750000,
     condition: "Bekas normal, switch biru",
     location: "Tangerang",
-    description: "Keyboard mechanical 87 tombol, cocok untuk mengetik tugas dan coding."
+    description:
+      "Keyboard mechanical 87 tombol, cocok untuk mengetik tugas dan coding.",
   },
   {
     id: "user-item-002",
@@ -78,8 +147,8 @@ const DEFAULT_USER_ITEMS = [
     price: 300000,
     condition: "Bekas bersih",
     location: "Jakarta Timur",
-    description: "Tas laptop 14 inci dengan banyak kompartemen dan rain cover."
-  }
+    description: "Tas laptop 14 inci dengan banyak kompartemen dan rain cover.",
+  },
 ];
 
 /* CORE STORAGE HELPERS - DO NOT EDIT WITHOUT COORDINATION */
