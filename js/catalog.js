@@ -49,12 +49,19 @@ function renderCategoryOptions() {
 // Mengambil data barang yang cocok dengan search dan filter
 function getFilteredCatalogItems() {
   var items = getMarketplaceItems();
+  var keyword = catalogState.searchText.trim().toLowerCase();
 
   return items.filter(function (item) {
-    var itemText = item.name + " " + item.category + " " + item.location;
-    var itemTextLower = itemText.toLowerCase();
+    var name = item.name.toLowerCase();
+    var category = item.category.toLowerCase();
+    var location = item.location.toLowerCase();
 
-    var matchSearch = itemTextLower.indexOf(catalogState.searchText) !== -1;
+    var matchSearch =
+      keyword === "" ||
+      name.indexOf(keyword) !== -1 ||
+      category.indexOf(keyword) !== -1 ||
+      location.indexOf(keyword) !== -1;
+
     var matchCategory =
       catalogState.category === "all" ||
       item.category === catalogState.category;
@@ -66,15 +73,22 @@ function getFilteredCatalogItems() {
 // Menampilkan semua card barang katalog
 function renderCatalog() {
   var catalogList = document.getElementById("catalogList");
+  var catalogMessage = document.getElementById("catalogMessage");
   var items = getFilteredCatalogItems();
 
   updateCatalogSummary();
 
   catalogList.innerHTML = "";
+  catalogMessage.textContent = "";
+
+  if (catalogState.searchText.trim() !== "") {
+    catalogMessage.textContent =
+      "Hasil pencarian untuk: " + catalogState.searchText;
+  }
 
   if (items.length === 0) {
     catalogList.innerHTML =
-      '<div class="empty-state">Barang tidak ditemukan.</div>';
+      '<div class="empty-state">Barang tidak ditemukan. Coba gunakan kata kunci lain.</div>';
     return;
   }
 
