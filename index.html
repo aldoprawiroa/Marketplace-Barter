@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SwapSpace - Katalog</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- ALDO PRAWIRO AKBAR - KATALOG & SEARCH -->
+  <header class="site-header">
+    <div class="container header-content">
+      <a class="brand" href="index.html">SwapSpace</a>
+      <nav class="main-nav" aria-label="Navigasi utama">
+        <a class="active" href="index.html">Katalog</a>
+        <a href="login.html">Login</a>
+        <a href="upload.html">Upload</a>
+        <a href="swap.html">Swap</a>
+        <a href="track.html">Tracking</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page">
+    <section class="page-heading">
+      <p class="eyebrow">Katalog Barang</p>
+      <h1>Temukan barang untuk ditukar</h1>
+      <p>Pilih barang yang tersedia, lalu ajukan penawaran swap menggunakan barang inventaris kamu.</p>
+    </section>
+
+    <section class="summary-grid" aria-label="Ringkasan katalog">
+      <article class="summary-card">
+        <span>Total Barang</span>
+        <strong id="totalItems">0</strong>
+      </article>
+      <article class="summary-card">
+        <span>Barang Tersedia</span>
+        <strong id="availableItems">0</strong>
+      </article>
+      <article class="summary-card">
+        <span>Kategori</span>
+        <strong id="totalCategories">0</strong>
+      </article>
+    </section>
+
+    <section class="toolbar catalog-toolbar" aria-label="Pencarian katalog">
+      <div class="form-group">
+        <label for="searchInput">Cari barang</label>
+        <input type="search" id="searchInput" placeholder="Cari nama, kategori, atau lokasi">
+      </div>
+      <div class="form-group">
+        <label for="categoryFilter">Filter kategori</label>
+        <select id="categoryFilter">
+          <option value="all">Semua kategori</option>
+        </select>
+      </div>
+    </section>
+
+    <div id="catalogMessage" class="message" role="status" aria-live="polite"></div>
+    <section id="catalogList" class="card-grid" aria-label="Daftar barang"></section>
+  </main>
+
+  <footer class="site-footer">
+    <p>SwapSpace - Simulasi barter barang mahasiswa berbasis localStorage.</p>
+  </footer>
+
+  <script src="js/utils.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/catalog.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SwapSpace - Login</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- ABDIL FAWASTA RASYADAN - AKUN & LOGIN -->
+  <header class="site-header">
+    <div class="container header-content">
+      <a class="brand" href="index.html">SwapSpace</a>
+      <nav class="main-nav" aria-label="Navigasi utama">
+        <a href="index.html">Katalog</a>
+        <a class="active" href="login.html">Login</a>
+        <a href="upload.html">Upload</a>
+        <a href="swap.html">Swap</a>
+        <a href="track.html">Tracking</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page">
+    <section class="page-heading">
+      <p class="eyebrow">Akun Demo</p>
+      <h1>Login simulasi</h1>
+      <p>Masuk dengan email dan password apa saja, lalu verifikasi OTP yang ditampilkan di halaman.</p>
+    </section>
+
+    <section class="two-column account-layout">
+      <div class="panel">
+        <h2>Masuk Akun</h2>
+        <form id="loginForm" class="form-stack">
+          <div class="form-group">
+            <label for="emailInput">Email</label>
+            <input type="email" id="emailInput" placeholder="nama@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="passwordInput">Password</label>
+            <input type="password" id="passwordInput" minlength="6" placeholder="Minimal 6 karakter" required>
+          </div>
+          <button type="submit" class="button primary">Kirim OTP</button>
+        </form>
+
+        <form id="otpForm" class="form-stack hidden">
+          <div class="form-group">
+            <label for="otpInput">Kode OTP</label>
+            <input type="text" id="otpInput" inputmode="numeric" maxlength="6" placeholder="Masukkan 6 digit OTP" required>
+          </div>
+          <button type="submit" class="button primary">Verifikasi Login</button>
+        </form>
+      </div>
+
+      <aside class="panel account-status">
+        <h2>Status Akun</h2>
+        <p id="loginStatus">Belum login</p>
+        <p id="balanceText">Saldo: Rp0</p>
+        <button id="logoutButton" class="button secondary" type="button">Logout</button>
+      </aside>
+    </section>
+
+    <div id="accountMessage" class="message" role="status" aria-live="polite"></div>
+  </main>
+
+  <footer class="site-footer">
+    <p>SwapSpace - Simulasi barter barang mahasiswa berbasis localStorage.</p>
+  </footer>
+
+  <script src="js/utils.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/account.js"></script>
+</body>
+</html>
