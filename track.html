@@ -4,10 +4,172 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SwapSpace - Tracking</title>
+  
+  <!-- Link ke CSS utama project Anda -->
   <link rel="stylesheet" href="css/style.css">
+  
+  <!-- INLINE CSS: Style baru untuk mempercantik tampilan HTML lama -->
+  <style>
+    /* ===== MODERN STYLES FOR TRACK.HTML ===== */
+    :root {
+      --primary: #4f46e5;
+      --primary-dark: #4338ca;
+      --danger: #ef4444;
+      --danger-hover: #dc2626;
+      --success: #10b981;
+      --bg-light: #f3f4f6;
+      --text-dark: #1f2937;
+      --text-gray: #6b7280;
+      --white: #ffffff;
+      --radius: 12px;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Profile Summary Cards - Modern Grid */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .summary-card {
+      background: var(--white);
+      padding: 20px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: transform 0.2s ease;
+      border: 1px solid #e5e7eb;
+    }
+
+    .summary-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .summary-card span {
+      display: block;
+      font-size: 13px;
+      color: var(--text-gray);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .summary-card strong {
+      font-size: 22px;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* Toolbar & Filters */
+    .tracking-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 30px;
+      background: var(--white);
+      padding: 20px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      align-items: flex-end;
+    }
+
+    .tracking-toolbar .form-group {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .tracking-toolbar label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .tracking-toolbar select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 14px;
+      background-color: var(--bg-light);
+      cursor: pointer;
+    }
+
+    .tracking-toolbar select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+    }
+
+    /* Button Danger (Reset) - Improved Style */
+    .button.danger {
+      background-color: var(--danger);
+      color: white;
+      padding: 11px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .button.danger:hover {
+      background-color: var(--danger-hover);
+      transform: scale(1.02);
+    }
+
+    /* Transaction List Container */
+    #transactionList {
+      min-height: 200px; /* Space for loading */
+    }
+
+    /* Floating WhatsApp Button (New Feature) */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+      text-decoration: none;
+      transition: transform 0.2s;
+      z-index: 1000;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1) rotate(10deg);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .tracking-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .button.danger {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <!-- INDRA NUR WAHYU SAPUTRA - TRACKING & PROFIL -->
+  <!-- ===== HEADER (DARI CODE LAMA) ===== -->
   <header class="site-header">
     <div class="container header-content">
       <a class="brand" href="index.html">SwapSpace</a>
@@ -16,22 +178,28 @@
         <a href="login.html">Login</a>
         <a href="upload.html">Upload</a>
         <a href="swap.html">Swap</a>
+        <!-- Active class tetap di sini -->
         <a class="active" href="track.html">Tracking</a>
       </nav>
     </div>
   </header>
 
+  <!-- ===== MAIN CONTENT ===== -->
   <main class="container page">
-    <section class="page-heading">
-      <p class="eyebrow">Profil & Tracking</p>
-      <h1>Pantau transaksi swap</h1>
-      <p>Lihat saldo, jumlah barang inventaris, dan status transaksi yang sudah diajukan.</p>
+    
+    <!-- Page Heading (DARI CODE LAMA) -->
+    <section class="page-heading" style="margin-bottom: 24px;">
+      <p class="eyebrow" style="color: var(--primary); font-weight: 700;">Profil & Tracking</p>
+      <h1 style="margin: 8px 0 12px 0; color: var(--text-dark);">Pantau transaksi swap</h1>
+      <p style="color: var(--text-gray);">Lihat saldo, jumlah barang inventaris, dan status transaksi yang sudah diajukan.</p>
     </section>
 
+    <!-- Summary Grid (DARI CODE LAMA - TAPI DIPERCANTIK CSS BARU) -->
+    <!-- ID-nya tidak berubah agar JS track.js bisa berjalan -->
     <section class="summary-grid" aria-label="Ringkasan profil">
       <article class="summary-card">
         <span>Nama Profil</span>
-        <strong id="profileName">Mahasiswa Demo</strong>
+        <strong id="profileName">Loading...</strong>
       </article>
       <article class="summary-card">
         <span>Saldo</span>
@@ -47,28 +215,76 @@
       </article>
     </section>
 
-    <section class="toolbar tracking-toolbar" aria-label="Filter transaksi">
+    <!-- Toolbar / Filter (DARI CODE LAMA - DIPERCANTIK) -->
+    <section class="tracking-toolbar" aria-label="Filter transaksi">
       <div class="form-group">
         <label for="transactionFilter">Filter status</label>
+        <!-- ID ini KUNCI untuk filter di track.js -->
         <select id="transactionFilter">
           <option value="all">Semua status</option>
-          <option value="Pending">Pending</option>
-          <option value="Berhasil">Berhasil</option>
-          <option value="Gagal">Gagal</option>
+          <option value="Menunggu">⏳ Menunggu</option>
+          <option value="Sukses">✅ Berhasil</option>
+          <option value="Dibatalkan">❌ Dibatalkan</option>
         </select>
       </div>
-      <button id="resetDemoButton" class="button danger" type="button">Reset Demo</button>
+      
+      <!-- ID ini KUNCI untuk reset di track.js -->
+      <button id="resetDemoButton" class="button danger" type="button">
+        🗑️ Reset Demo
+      </button>
     </section>
 
-    <section id="transactionList" class="transaction-list" aria-label="Daftar transaksi"></section>
+    <!-- Transaction List (DARI CODE LAMA) -->
+    <!-- Di sini track.js akan menyuntikkan (inject) kartu transaksi -->
+    <section id="transactionList" class="transaction-list" aria-label="Daftar transaksi">
+      <!-- Placeholder loading saat JS memproses -->
+      <div style="text-align: center; padding: 40px; color: var(--text-gray);">
+        <p>Memuat data transaksi...</p>
+      </div>
+    </section>
+
   </main>
 
+  <!-- ===== FOOTER (DARI CODE LAMA) ===== -->
   <footer class="site-footer">
     <p>SwapSpace - Simulasi barter barang mahasiswa berbasis localStorage.</p>
   </footer>
 
+  <!-- ===== FITUR BARU: FLOATING WHATSAPP BUTTON ===== -->
+  <!-- Ganti nomor HP di href dengan nomor Anda -->
+  <a href="https://wa.me/6285187507115?text=Halo%20Admin%20SwapSpace" 
+     class="whatsapp-float" 
+     target="_blank" 
+     title="Hubungi via WhatsApp">
+    💬
+  </a>
+
+  <!-- ===== SCRIPTS (SAMA SEPERTI CODE LAMA) ===== -->
   <script src="js/utils.js"></script>
   <script src="js/data.js"></script>
+  <!-- Ini adalah file JS baru yang sudah kita merge -->
   <script src="js/track.js"></script>
+  
+  <!-- Script tambahan untuk handle error jika JS gagal load -->
+  <script>
+    window.addEventListener('load', function() {
+      // Cek apakah fungsi renderProfileSummary ada (artinya track.js sudah load)
+      if (typeof renderProfileSummary === 'function') {
+        // Jika track.js sukses load, fungsi ini akan dijalankan otomatis oleh DOMContentLoaded
+        console.log("✅ System Ready: track.js loaded successfully.");
+      } else {
+        // Jika track.js hilang/error, tampilkan pesan di list
+        const list = document.getElementById('transactionList');
+        if(list) {
+          list.innerHTML = `
+            <div style="background:#fee2e2; color:#b91c1c; padding:20px; border-radius:12px; border:1px solid #fecaca;">
+              <h3>⚠️ System Error</h3>
+              <p>File <code>js/track.js</code> tidak ditemukan atau gagal dimuat. Transaksi tidak bisa ditampilkan.</p>
+            </div>`;
+        }
+      }
+    });
+  </script>
+
 </body>
 </html>
