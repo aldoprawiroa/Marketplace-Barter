@@ -27,7 +27,10 @@ const MARKETPLACE_ITEMS = [
     location: "Jakarta Selatan",
     status: "Tersedia",
     description: "Kamera mirrorless cocok untuk konten tugas kampus dan dokumentasi acara."
+<<<<<<< HEAD
     status: "Tersedia"
+=======
+>>>>>>> 846c7f68a703cb55638ccdbfb384323795d504ef
   },
   {
     id: "item-002",
@@ -38,7 +41,10 @@ const MARKETPLACE_ITEMS = [
     location: "Bekasi",
     status: "Tersedia",
     description: "Sepeda lipat ringan untuk perjalanan ke kampus atau stasiun terdekat."
+<<<<<<< HEAD
     status: "Tersedia"
+=======
+>>>>>>> 846c7f68a703cb55638ccdbfb384323795d504ef
   },
   {
     id: "item-003",
@@ -49,7 +55,10 @@ const MARKETPLACE_ITEMS = [
     location: "Bandung",
     status: "Diproses",
     description: "Jaket kulit lokal ukuran L, nyaman dipakai untuk motor harian."
+<<<<<<< HEAD
     status: "Tersedia"
+=======
+>>>>>>> 846c7f68a703cb55638ccdbfb384323795d504ef
   },
   {
     id: "item-004",
@@ -60,7 +69,10 @@ const MARKETPLACE_ITEMS = [
     location: "Depok",
     status: "Tersedia",
     description: "Rak buku empat tingkat untuk kos, apartemen, atau ruang belajar."
+<<<<<<< HEAD
     status: "Tersedia"
+=======
+>>>>>>> 846c7f68a703cb55638ccdbfb384323795d504ef
   }
 ];
 
@@ -74,7 +86,10 @@ const DEFAULT_USER_ITEMS = [
     condition: "Bekas normal, switch biru",
     location: "Tangerang",
     description: "Keyboard mechanical 87 tombol, cocok untuk mengetik tugas dan coding."
+<<<<<<< HEAD
     status: "Tersedia"
+=======
+>>>>>>> 846c7f68a703cb55638ccdbfb384323795d504ef
   },
   {
     id: "user-item-002",
@@ -84,7 +99,10 @@ const DEFAULT_USER_ITEMS = [
     condition: "Bekas bersih",
     location: "Jakarta Timur",
     description: "Tas laptop 14 inci dengan banyak kompartemen dan rain cover."
+<<<<<<< HEAD
     status: "Tersedia"
+=======
+>>>>>>> 846c7f68a703cb55638ccdbfb384323795d504ef
   }
 ];
 
