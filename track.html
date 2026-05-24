@@ -1,290 +1,101 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SwapSpace - Tracking</title>
-  
-  <!-- Link ke CSS utama project Anda -->
-  <link rel="stylesheet" href="css/style.css">
-  
-  <!-- INLINE CSS: Style baru untuk mempercantik tampilan HTML lama -->
-  <style>
-    /* ===== MODERN STYLES FOR TRACK.HTML ===== */
-    :root {
-      --primary: #4f46e5;
-      --primary-dark: #4338ca;
-      --danger: #ef4444;
-      --danger-hover: #dc2626;
-      --success: #10b981;
-      --bg-light: #f3f4f6;
-      --text-dark: #1f2937;
-      --text-gray: #6b7280;
-      --white: #ffffff;
-      --radius: 12px;
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    }
-
-    /* Profile Summary Cards - Modern Grid */
-    .summary-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 16px;
-      margin-bottom: 30px;
-    }
-
-    .summary-card {
-      background: var(--white);
-      padding: 20px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      text-align: center;
-      transition: transform 0.2s ease;
-      border: 1px solid #e5e7eb;
-    }
-
-    .summary-card:hover {
-      transform: translateY(-3px);
-    }
-
-    .summary-card span {
-      display: block;
-      font-size: 13px;
-      color: var(--text-gray);
-      margin-bottom: 8px;
-      font-weight: 500;
-    }
-
-    .summary-card strong {
-      font-size: 22px;
-      color: var(--primary);
-      font-weight: 700;
-    }
-
-    /* Toolbar & Filters */
-    .tracking-toolbar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-bottom: 30px;
-      background: var(--white);
-      padding: 20px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      align-items: flex-end;
-    }
-
-    .tracking-toolbar .form-group {
-      flex: 1;
-      min-width: 200px;
-    }
-
-    .tracking-toolbar label {
-      display: block;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-dark);
-      margin-bottom: 8px;
-    }
-
-    .tracking-toolbar select {
-      width: 100%;
-      padding: 10px 12px;
-      border: 1px solid #d1d5db;
-      border-radius: 8px;
-      font-size: 14px;
-      background-color: var(--bg-light);
-      cursor: pointer;
-    }
-
-    .tracking-toolbar select:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
-    }
-
-    /* Button Danger (Reset) - Improved Style */
-    .button.danger {
-      background-color: var(--danger);
-      color: white;
-      padding: 11px 20px;
-      border: none;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      white-space: nowrap;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .button.danger:hover {
-      background-color: var(--danger-hover);
-      transform: scale(1.02);
-    }
-
-    /* Transaction List Container */
-    #transactionList {
-      min-height: 200px; /* Space for loading */
-    }
-
-    /* Floating WhatsApp Button (New Feature) */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background-color: #25D366;
-      color: white;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
-      text-decoration: none;
-      transition: transform 0.2s;
-      z-index: 1000;
-    }
-
-    .whatsapp-float:hover {
-      transform: scale(1.1) rotate(10deg);
-    }
-
-    /* Responsive Adjustments */
-    @media (max-width: 768px) {
-      .tracking-toolbar {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      .button.danger {
-        width: 100%;
-        justify-content: center;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <!-- ===== HEADER (DARI CODE LAMA) ===== -->
-  <header class="site-header">
-    <div class="container header-content">
-      <a class="brand" href="index.html">SwapSpace</a>
-      <nav class="main-nav" aria-label="Navigasi utama">
-        <a href="index.html">Katalog</a>
-        <a href="login.html">Login</a>
-        <a href="upload.html">Upload</a>
-        <a href="swap.html">Swap</a>
-        <!-- Active class tetap di sini -->
-        <a class="active" href="track.html">Tracking</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- ===== MAIN CONTENT ===== -->
-  <main class="container page">
-    
-    <!-- Page Heading (DARI CODE LAMA) -->
-    <section class="page-heading" style="margin-bottom: 24px;">
-      <p class="eyebrow" style="color: var(--primary); font-weight: 700;">Profil & Tracking</p>
-      <h1 style="margin: 8px 0 12px 0; color: var(--text-dark);">Pantau transaksi swap</h1>
-      <p style="color: var(--text-gray);">Lihat saldo, jumlah barang inventaris, dan status transaksi yang sudah diajukan.</p>
-    </section>
-
-    <!-- Summary Grid (DARI CODE LAMA - TAPI DIPERCANTIK CSS BARU) -->
-    <!-- ID-nya tidak berubah agar JS track.js bisa berjalan -->
-    <section class="summary-grid" aria-label="Ringkasan profil">
-      <article class="summary-card">
-        <span>Nama Profil</span>
-        <strong id="profileName">Loading...</strong>
-      </article>
-      <article class="summary-card">
-        <span>Saldo</span>
-        <strong id="profileBalance">Rp0</strong>
-      </article>
-      <article class="summary-card">
-        <span>Barang Saya</span>
-        <strong id="profileItemCount">0</strong>
-      </article>
-      <article class="summary-card">
-        <span>Transaksi</span>
-        <strong id="profileTransactionCount">0</strong>
-      </article>
-    </section>
-
-    <!-- Toolbar / Filter (DARI CODE LAMA - DIPERCANTIK) -->
-    <section class="tracking-toolbar" aria-label="Filter transaksi">
-      <div class="form-group">
-        <label for="transactionFilter">Filter status</label>
-        <!-- ID ini KUNCI untuk filter di track.js -->
-        <select id="transactionFilter">
-          <option value="all">Semua status</option>
-          <option value="Menunggu">⏳ Menunggu</option>
-          <option value="Sukses">✅ Berhasil</option>
-          <option value="Dibatalkan">❌ Dibatalkan</option>
-        </select>
-      </div>
-      
-      <!-- ID ini KUNCI untuk reset di track.js -->
-      <button id="resetDemoButton" class="button danger" type="button">
-        🗑️ Reset Demo
-      </button>
-    </section>
-
-    <!-- Transaction List (DARI CODE LAMA) -->
-    <!-- Di sini track.js akan menyuntikkan (inject) kartu transaksi -->
-    <section id="transactionList" class="transaction-list" aria-label="Daftar transaksi">
-      <!-- Placeholder loading saat JS memproses -->
-      <div style="text-align: center; padding: 40px; color: var(--text-gray);">
-        <p>Memuat data transaksi...</p>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ===== FOOTER (DARI CODE LAMA) ===== -->
-  <footer class="site-footer">
-    <p>SwapSpace - Simulasi barter barang mahasiswa berbasis localStorage.</p>
-  </footer>
-
-  <!-- ===== FITUR BARU: FLOATING WHATSAPP BUTTON ===== -->
-  <!-- Ganti nomor HP di href dengan nomor Anda -->
-  <a href="https://wa.me/6285187507115?text=Halo%20Admin%20SwapSpace" 
-     class="whatsapp-float" 
-     target="_blank" 
-     title="Hubungi via WhatsApp">
-    💬
-  </a>
-
-  <!-- ===== SCRIPTS (SAMA SEPERTI CODE LAMA) ===== -->
-  <script src="js/utils.js"></script>
-  <script src="js/data.js"></script>
-  <!-- Ini adalah file JS baru yang sudah kita merge -->
-  <script src="js/track.js"></script>
-  
-  <!-- Script tambahan untuk handle error jika JS gagal load -->
-  <script>
-    window.addEventListener('load', function() {
-      // Cek apakah fungsi renderProfileSummary ada (artinya track.js sudah load)
-      if (typeof renderProfileSummary === 'function') {
-        // Jika track.js sukses load, fungsi ini akan dijalankan otomatis oleh DOMContentLoaded
-        console.log("✅ System Ready: track.js loaded successfully.");
-      } else {
-        // Jika track.js hilang/error, tampilkan pesan di list
-        const list = document.getElementById('transactionList');
-        if(list) {
-          list.innerHTML = `
-            <div style="background:#fee2e2; color:#b91c1c; padding:20px; border-radius:12px; border:1px solid #fecaca;">
-              <h3>⚠️ System Error</h3>
-              <p>File <code>js/track.js</code> tidak ditemukan atau gagal dimuat. Transaksi tidak bisa ditampilkan.</p>
-            </div>`;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracking Transaksi - SwapSpace</title>
+    <!-- Menggunakan Tailwind CSS via CDN untuk styling cepat dan konsisten -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom Styles untuk mencocokkan tema SwapSpace */
+        .theme-text { color: #0f172a; }
+        .theme-primary { color: #0d9488; }
+        .theme-primary-bg { background-color: #0d9488; }
+        .theme-primary-bg:hover { background-color: #0f766e; }
+        
+        .status-badge {
+            @apply px-2 py-1 rounded-full text-xs font-semibold;
         }
-      }
-    });
-  </script>
+        .status-pending { @apply bg-yellow-100 text-yellow-800; }
+        .status-success { @apply bg-green-100 text-green-800; }
+        .status-cancelled { @apply bg-red-100 text-red-800; }
+        .status-track { @apply bg-blue-100 text-blue-800; }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-slate-700">
 
+    <!-- Navbar (Sama dengan halaman lain) -->
+    <nav class="bg-white shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold theme-primary">SwapSpace</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="text-gray-500 hover:text-gray-700">Katalog</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-700">Login</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-700">Upload</a>
+                    <a href="swap.html" class="text-gray-500 hover:text-gray-700">Swap</a>
+                    <a href="track.html" class="text-teal-600 font-semibold">Tracking</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <div class="mb-8">
+            <h2 class="text-sm font-bold text-gray-400 uppercase tracking-wide">Riwayat Transaksi</h2>
+            <h1 class="text-3xl font-bold text-gray-900 mt-2">Lacak Status Barang Anda</h1>
+            <p class="mt-2 text-gray-600">Pantau kondisi swap: Menunggu, Sedang Dikirim, Selesai, atau Dibatalkan.</p>
+        </div>
+
+        <!-- Ringkasan Profil (Diatur via JS) -->
+        <div id="profile-summary" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            <!-- Konten akan diisi oleh JS -->
+        </div>
+
+        <!-- Filter dan Reset -->
+        <div class="flex flex-col md:flex-row justify-between items-center mb-6 bg-white p-4 rounded-lg shadow-sm">
+            <div class="flex space-x-2 mb-4 md:mb-0">
+                <button onclick="filterTransactions('all')" class="filter-btn px-4 py-2 rounded-md text-sm font-medium bg-gray-900 text-white transition">Semua</button>
+                <button onclick="filterTransactions('pending')" class="filter-btn px-4 py-2 rounded-md text-sm font-medium bg-gray-100 text-gray-600 hover:bg-gray-200 transition">Menunggu</button>
+                <button onclick="filterTransactions('success')" class="filter-btn px-4 py-2 rounded-md text-sm font-medium bg-gray-100 text-gray-600 hover:bg-gray-200 transition">Sukses</button>
+                <button onclick="filterTransactions('cancelled')" class="filter-btn px-4 py-2 rounded-md text-sm font-medium bg-gray-100 text-gray-600 hover:bg-gray-200 transition">Dibatalkan</button>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <input type="text" id="search-input" placeholder="Cari barang atau kode..." class="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
+                <button onclick="resetDemo()" class="text-red-500 text-sm hover:text-red-700 font-medium border border-red-200 px-3 py-2 rounded-md hover:bg-red-50">Reset Demo</button>
+            </div>
+        </div>
+
+        <!-- Tabel Tracking -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kode Swap</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Barang Tujuan (Ingin)</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Barang Penawaran (Punya)</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Selisih</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                        <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="transaction-list" class="bg-white divide-y divide-gray-200">
+                    <!-- Data akan dimuat di sini oleh JS -->
+                </tbody>
+            </table>
+            <!-- Empty State -->
+            <div id="empty-state" class="hidden text-center py-12">
+                <p class="text-gray-400 text-lg">Belum ada data transaksi.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Script JS -->
+    <script src="js/track.js"></script>
 </body>
 </html>
