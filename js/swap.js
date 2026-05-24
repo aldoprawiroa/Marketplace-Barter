@@ -150,9 +150,14 @@ function handleSubmitSwap() {
   };
 
   setBalance(getBalance() - checkoutValues.totalPayment);
-  
   addTransaction(transaction);
   
+  var currentUserItems = getUserItems();
+  var updatedUserItems = currentUserItems.filter(function(item) {
+    return item.id !== selectedOfferedItem.id;
+  });
+  saveUserItems(updatedUserItems);
+
   localStorage.removeItem(STORAGE_KEYS.selectedItem);
 
   showMessage("swapMessage", "Pengajuan swap berhasil! Mengalihkan ke tracking...", "success");
