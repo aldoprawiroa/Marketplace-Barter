@@ -24,8 +24,11 @@ function handleLoginSubmit(event) {
     return;
   }
 
-  if (password.length < 6) {
-    showMessage("accountMessage", "Password minimal 6 karakter.", "error");
+  if (
+  email !== DEFAULT_USER.email ||
+  password !== DEFAULT_USER.password
+) {
+    showMessage("accountMessage", "Email atau password tidak sesuai.", "error");
     return;
   }
 
@@ -55,6 +58,10 @@ function handleOtpSubmit(event) {
 });
 
   setLoggedIn(true);
+  generatedOtp = "";
+  document.getElementById("otpForm").classList.add("hidden");
+  document.getElementById("loginForm").reset();
+  document.getElementById("otpForm").reset();
   renderAccountStatus();
   showMessage("accountMessage", "Login berhasil. Kamu akan diarahkan ke katalog.", "success");
 
@@ -66,6 +73,11 @@ function handleOtpSubmit(event) {
 function handleLogout() {
   setLoggedIn(false);
   setCurrentUser(null);
+  document.getElementById("otpForm").classList.add("hidden");
+  document.getElementById("loginForm").reset();
+  document.getElementById("otpForm").reset();
+  generatedOtp = "";
+  pendingEmail = "";
   renderAccountStatus();
   showMessage("accountMessage", "Logout berhasil. Status akun kembali menjadi belum login.", "success");
 }

@@ -138,7 +138,7 @@ function setLoggedIn(value) {
 }
 
 function getCurrentUser() {
-  return readData(STORAGE_KEYS.user, DEFAULT_USER);
+  return readData(STORAGE_KEYS.user, DEFAULT_USER) || DEFAULT_USER;
 }
 
 function setCurrentUser(user) {
