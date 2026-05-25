@@ -4,6 +4,9 @@ var generatedOtp = "";
 var pendingEmail = "";
 
 document.addEventListener("DOMContentLoaded", function () {
+  if (isLoggedIn()) {
+    renderAccountStatus();
+  }
   renderAccountStatus();
 
   document.getElementById("loginForm").addEventListener("submit", handleLoginSubmit);
@@ -34,6 +37,7 @@ function handleLoginSubmit(event) {
 
   pendingEmail = email;
   generatedOtp = String(Math.floor(100000 + Math.random() * 900000));
+  document.getElementById("otpInput").focus();
   document.getElementById("otpForm").classList.remove("hidden");
   showMessage("accountMessage", "OTP simulasi kamu: " + generatedOtp, "info");
 }
