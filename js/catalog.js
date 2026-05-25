@@ -118,26 +118,29 @@ function createCatalogCard(item) {
   var card = document.createElement("article");
   var isAvailable = item.status === "Tersedia";
   var statusClass = isAvailable ? "available" : "process";
+  var buttonText = isAvailable ? "Ajukan Swap" : "Sedang Diproses";
 
   card.className = "item-card";
 
   card.innerHTML =
+    '<div class="item-card-header">' +
     "<h3>" +
     escapeHTML(item.name) +
     "</h3>" +
-    '<span class="badge ' +
+    '<span class="catalog-status ' +
     statusClass +
     '">' +
     escapeHTML(item.status) +
     "</span>" +
+    "</div>" +
     '<div class="item-meta">' +
-    "<span>" +
+    "<span>Kategori: " +
     escapeHTML(item.category) +
     "</span>" +
-    "<span>" +
+    "<span>Kondisi: " +
     escapeHTML(item.condition) +
     "</span>" +
-    "<span>" +
+    "<span>Lokasi: " +
     escapeHTML(item.location) +
     "</span>" +
     "</div>" +
@@ -147,9 +150,11 @@ function createCatalogCard(item) {
     '<p class="item-description">' +
     escapeHTML(item.description) +
     "</p>" +
-    '<button class="button primary" type="button"' +
+    '<button class="catalog-swap-button" type="button"' +
     (isAvailable ? "" : " disabled") +
-    ">Ajukan Swap</button>";
+    ">" +
+    buttonText +
+    "</button>";
 
   if (isAvailable) {
     card.querySelector("button").addEventListener("click", function () {
@@ -159,7 +164,6 @@ function createCatalogCard(item) {
 
   return card;
 }
-
 // Mengupdate angka ringkasan katalog
 function updateCatalogSummary() {
   var items = getMarketplaceItems();
