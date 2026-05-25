@@ -145,6 +145,12 @@ function setCurrentUser(user) {
   saveData(STORAGE_KEYS.user, user);
 }
 
+function requireLogin() {
+  if (!isLoggedIn()) {
+    window.location.href = "login.html";
+  }
+}
+
 /* BALANCE HELPERS - FAIZ ONLY */
 function getBalance() {
   return Number(readData(STORAGE_KEYS.balance, DEFAULT_BALANCE)) || 0;
