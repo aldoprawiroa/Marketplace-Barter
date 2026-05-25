@@ -32,6 +32,9 @@ function renderCategoryOptions() {
   var items = getMarketplaceItems();
   var categories = [];
 
+  // Kosongkan dulu agar option tidak dobel
+  categoryFilter.innerHTML = '<option value="all">Semua kategori</option>';
+
   items.forEach(function (item) {
     if (categories.indexOf(item.category) === -1) {
       categories.push(item.category);
@@ -81,14 +84,26 @@ function renderCatalog() {
   catalogList.innerHTML = "";
   catalogMessage.textContent = "";
 
-  if (catalogState.searchText.trim() !== "") {
+  if (
+    catalogState.searchText.trim() !== "" &&
+    catalogState.category !== "all"
+  ) {
+    catalogMessage.textContent =
+      "Hasil pencarian: " +
+      catalogState.searchText +
+      " | Kategori: " +
+      catalogState.category;
+  } else if (catalogState.searchText.trim() !== "") {
     catalogMessage.textContent =
       "Hasil pencarian untuk: " + catalogState.searchText;
+  } else if (catalogState.category !== "all") {
+    catalogMessage.textContent =
+      "Menampilkan kategori: " + catalogState.category;
   }
 
   if (items.length === 0) {
     catalogList.innerHTML =
-      '<div class="empty-state">Barang tidak ditemukan. Coba gunakan kata kunci lain.</div>';
+      '<div class="empty-state">Barang tidak ditemukan. Coba gunakan kata kunci atau kategori lain.</div>';
     return;
   }
 
