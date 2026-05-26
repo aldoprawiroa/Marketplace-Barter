@@ -26,11 +26,9 @@ const MARKETPLACE_ITEMS = [
     condition: "Bekas mulus, shutter count rendah",
     location: "Jakarta Selatan",
     status: "Tersedia",
-    description: "Kamera mirrorless cocok untuk konten tugas kampus dan dokumentasi acara."
-<<<<<<< HEAD
+    description: "Kamera mirrorless cocok untuk konten tugas kampus dan dokumentasi acara.",
     status: "Tersedia"
-=======
->>>>>>> 846c7f68a703cb55638ccdbfb384323795d504ef
+
   },
   {
     id: "item-002",
@@ -40,11 +38,8 @@ const MARKETPLACE_ITEMS = [
     condition: "Bekas terawat",
     location: "Bekasi",
     status: "Tersedia",
-    description: "Sepeda lipat ringan untuk perjalanan ke kampus atau stasiun terdekat."
-<<<<<<< HEAD
+    description: "Sepeda lipat ringan untuk perjalanan ke kampus atau stasiun terdekat.",
     status: "Tersedia"
-=======
->>>>>>> 846c7f68a703cb55638ccdbfb384323795d504ef
   },
   {
     id: "item-003",
@@ -53,12 +48,8 @@ const MARKETPLACE_ITEMS = [
     price: 650000,
     condition: "Bekas, warna masih pekat",
     location: "Bandung",
-    status: "Diproses",
-    description: "Jaket kulit lokal ukuran L, nyaman dipakai untuk motor harian."
-<<<<<<< HEAD
-    status: "Tersedia"
-=======
->>>>>>> 846c7f68a703cb55638ccdbfb384323795d504ef
+    status: "Tersedia",
+    description: "Jaket kulit lokal ukuran L, nyaman dipakai untuk motor harian.",
   },
   {
     id: "item-004",
@@ -68,11 +59,8 @@ const MARKETPLACE_ITEMS = [
     condition: "Bekas rapi",
     location: "Depok",
     status: "Tersedia",
-    description: "Rak buku empat tingkat untuk kos, apartemen, atau ruang belajar."
-<<<<<<< HEAD
+    description: "Rak buku empat tingkat untuk kos, apartemen, atau ruang belajar.",
     status: "Tersedia"
-=======
->>>>>>> 846c7f68a703cb55638ccdbfb384323795d504ef
   }
 ];
 
@@ -85,11 +73,8 @@ const DEFAULT_USER_ITEMS = [
     price: 750000,
     condition: "Bekas normal, switch biru",
     location: "Tangerang",
-    description: "Keyboard mechanical 87 tombol, cocok untuk mengetik tugas dan coding."
-<<<<<<< HEAD
+    description: "Keyboard mechanical 87 tombol, cocok untuk mengetik tugas dan coding.",
     status: "Tersedia"
-=======
->>>>>>> 846c7f68a703cb55638ccdbfb384323795d504ef
   },
   {
     id: "user-item-002",
@@ -98,11 +83,8 @@ const DEFAULT_USER_ITEMS = [
     price: 300000,
     condition: "Bekas bersih",
     location: "Jakarta Timur",
-    description: "Tas laptop 14 inci dengan banyak kompartemen dan rain cover."
-<<<<<<< HEAD
+    description: "Tas laptop 14 inci dengan banyak kompartemen dan rain cover.",
     status: "Tersedia"
-=======
->>>>>>> 846c7f68a703cb55638ccdbfb384323795d504ef
   }
 ];
 

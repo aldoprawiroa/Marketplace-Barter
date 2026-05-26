@@ -1,6 +1,5 @@
 /* IBRAHIM - UPLOAD & INVENTARIS */
 
-<<<<<<< HEAD
 const uploadForm = document.getElementById("uploadForm");
 const itemImage = document.getElementById("itemImage");
 const imagePreview = document.getElementById("imagePreview");
@@ -8,8 +7,7 @@ const inventoryList = document.getElementById("inventoryList");
 const uploadMessage = document.getElementById("uploadMessage");
 
 
-=======
->>>>>>> 846c7f68a703cb55638ccdbfb384323795d504ef
+
 var selectedImageData = "";
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -21,10 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function handleImagePreview(event) {
   var file = event.target.files[0];
-<<<<<<< HEAD
-=======
   var imagePreview = document.getElementById("imagePreview");
->>>>>>> 846c7f68a703cb55638ccdbfb384323795d504ef
 
   selectedImageData = "";
 
@@ -73,14 +68,10 @@ function handleUploadSubmit(event) {
     showMessage("uploadMessage", "File foto harus berupa gambar.", "error");
     return;
   }
-<<<<<<< HEAD
   if (!selectedImageData) {
   showMessage("uploadMessage", "Preview gambar belum siap.", "error");
   return;
   }
-=======
-
->>>>>>> 846c7f68a703cb55638ccdbfb384323795d504ef
   var item = {
     id: createId("user-item"),
     name: name,
@@ -89,12 +80,9 @@ function handleUploadSubmit(event) {
     condition: condition,
     location: location,
     description: description,
-<<<<<<< HEAD
     imageData: selectedImageData,
-    status: "Tersedia"
-=======
+    status: "Tersedia",
     imageData: selectedImageData
->>>>>>> 846c7f68a703cb55638ccdbfb384323795d504ef
   };
 
   addUserItem(item);
@@ -106,10 +94,8 @@ function handleUploadSubmit(event) {
 }
 
 function renderInventoryList() {
-<<<<<<< HEAD
-=======
+
   var inventoryList = document.getElementById("inventoryList");
->>>>>>> 846c7f68a703cb55638ccdbfb384323795d504ef
   var items = getUserItems();
 
   inventoryList.innerHTML = "";
@@ -119,7 +105,6 @@ function renderInventoryList() {
     return;
   }
 
-<<<<<<< HEAD
 items.forEach(function (item) {
   var card = document.createElement("article");
   card.className = "inventory-item";
@@ -138,18 +123,6 @@ items.forEach(function (item) {
   inventoryList.appendChild(card);
 });
 }
-=======
   items.forEach(function (item) {
-    var card = document.createElement("article");
-    card.className = "inventory-item";
-    card.innerHTML = [
-      "<h3>" + escapeHTML(item.name) + "</h3>",
-      "<p>" + escapeHTML(item.category) + " - " + escapeHTML(item.condition) + "</p>",
-      "<p>" + escapeHTML(item.location) + "</p>",
-      "<strong>" + formatRupiah(item.price) + "</strong>",
-      "<p>" + escapeHTML(item.description) + "</p>"
-    ].join("");
-    inventoryList.appendChild(card);
   });
 }
->>>>>>> 846c7f68a703cb55638ccdbfb384323795d504ef
