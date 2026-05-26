@@ -81,8 +81,7 @@ function handleUploadSubmit(event) {
     location: location,
     description: description,
     imageData: selectedImageData,
-    status: "Tersedia",
-    imageData: selectedImageData
+    status: "Tersedia"
   };
 
   addUserItem(item);
@@ -116,13 +115,12 @@ items.forEach(function (item) {
     "<h3>" + escapeHTML(item.name) + "</h3>",
     "<p>" + escapeHTML(item.category) + " - " + escapeHTML(item.condition) + "</p>",
     "<p>" + escapeHTML(item.location) + "</p>",
+    '<span class="badge available">' + escapeHTML(item.status) + "</span>",
     "<strong>Harga: " + formatRupiah(item.price) + "</strong>",
-    "<p>" + escapeHTML(item.description) + "</p>"
+    "<p>" + escapeHTML(item.description) + "</p>",
+    "<small>ID Barang: " + escapeHTML(item.id) + "</small>"
   ].join("");
 
-  inventoryList.appendChild(card);
-});
-}
-  items.forEach(function (item) {
+ inventoryList.appendChild(card);
   });
 }
