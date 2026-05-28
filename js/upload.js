@@ -126,6 +126,9 @@ items.forEach(function (item) {
   });
 }
 function deleteItem(itemId) {
+  if (!confirm("Yakin ingin menghapus barang ini?")) {
+    return;
+  }
   var items = getUserItems();
 
   var filteredItems = items.filter(function (item) {
