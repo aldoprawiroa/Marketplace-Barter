@@ -118,9 +118,23 @@ items.forEach(function (item) {
     '<span class="badge available">' + escapeHTML(item.status) + "</span>",
     "<strong>Harga: " + formatRupiah(item.price) + "</strong>",
     "<p>" + escapeHTML(item.description) + "</p>",
-    "<small>ID Barang: " + escapeHTML(item.id) + "</small>"
+    "<small>ID Barang: " + escapeHTML(item.id) + "</small>",
+    '<button class="button danger" onclick="deleteItem(\'' + item.id + '\')">Hapus</button>'
   ].join("");
 
  inventoryList.appendChild(card);
   });
+}
+function deleteItem(itemId) {
+  var items = getUserItems();
+
+  var filteredItems = items.filter(function (item) {
+    return item.id !== itemId;
+  });
+
+  saveUserItems(filteredItems);
+
+  renderInventoryList();
+
+  showMessage("uploadMessage", "Barang berhasil dihapus.", "success");
 }
