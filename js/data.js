@@ -12,8 +12,13 @@ const DEFAULT_BALANCE = 2500000;
 
 /* DEFAULT USER - ABDIL ONLY */
 const DEFAULT_USER = {
+  id: "user-001",
   name: "Mahasiswa Demo",
-  email: "demo@swapspace.local"
+  email: "demo@swapspace.local",
+  password: "password123",
+  balance: DEFAULT_BALANCE,
+  inventory: [],
+  transactions: []
 };
 
 /* MARKETPLACE ITEMS - ALDO ONLY */
@@ -139,11 +144,17 @@ function setLoggedIn(value) {
 }
 
 function getCurrentUser() {
-  return readData(STORAGE_KEYS.user, DEFAULT_USER);
+  return readData(STORAGE_KEYS.user, DEFAULT_USER) || DEFAULT_USER;
 }
 
 function setCurrentUser(user) {
   saveData(STORAGE_KEYS.user, user);
+}
+
+function requireLogin() {
+  if (!isLoggedIn()) {
+    window.location.href = "login.html";
+  }
 }
 
 /* BALANCE HELPERS - FAIZ ONLY */
