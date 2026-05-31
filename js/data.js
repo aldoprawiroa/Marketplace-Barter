@@ -5,7 +5,7 @@ const STORAGE_KEYS = {
   balance: "swapspace_balance",
   selectedItem: "swapspace_selected_item",
   userItems: "swapspace_user_items",
-  transactions: "swapspace_transactions"
+  transactions: "swapspace_transactions",
 };
 
 const DEFAULT_BALANCE = 2500000;
@@ -18,7 +18,7 @@ const DEFAULT_USER = {
   password: "password123",
   balance: DEFAULT_BALANCE,
   inventory: [],
-  transactions: []
+  transactions: [],
 };
 
 /* MARKETPLACE ITEMS - ALDO ONLY */
@@ -31,9 +31,9 @@ const MARKETPLACE_ITEMS = [
     condition: "Bekas mulus, shutter count rendah",
     location: "Jakarta Selatan",
     status: "Tersedia",
-    description: "Kamera mirrorless cocok untuk konten tugas kampus dan dokumentasi acara.",
-    status: "Tersedia"
-
+    description:
+      "Kamera mirrorless cocok untuk konten tugas kampus dan dokumentasi acara.",
+    status: "Tersedia",
   },
   {
     id: "item-002",
@@ -43,8 +43,9 @@ const MARKETPLACE_ITEMS = [
     condition: "Bekas terawat",
     location: "Bekasi",
     status: "Tersedia",
-    description: "Sepeda lipat ringan untuk perjalanan ke kampus atau stasiun terdekat.",
-    status: "Tersedia"
+    description:
+      "Sepeda lipat ringan untuk perjalanan ke kampus atau stasiun terdekat.",
+    status: "Tersedia",
   },
   {
     id: "item-003",
@@ -54,7 +55,8 @@ const MARKETPLACE_ITEMS = [
     condition: "Bekas, warna masih pekat",
     location: "Bandung",
     status: "Tersedia",
-    description: "Jaket kulit lokal ukuran L, nyaman dipakai untuk motor harian.",
+    description:
+      "Jaket kulit lokal ukuran L, nyaman dipakai untuk motor harian.",
   },
   {
     id: "item-004",
@@ -64,9 +66,10 @@ const MARKETPLACE_ITEMS = [
     condition: "Bekas rapi",
     location: "Depok",
     status: "Tersedia",
-    description: "Rak buku empat tingkat untuk kos, apartemen, atau ruang belajar.",
-    status: "Tersedia"
-  }
+    description:
+      "Rak buku empat tingkat untuk kos, apartemen, atau ruang belajar.",
+    status: "Tersedia",
+  },
 ];
 
 /* USER ITEMS - IBRAHIM ONLY */
@@ -78,8 +81,9 @@ const DEFAULT_USER_ITEMS = [
     price: 750000,
     condition: "Bekas normal, switch biru",
     location: "Tangerang",
-    description: "Keyboard mechanical 87 tombol, cocok untuk mengetik tugas dan coding.",
-    status: "Tersedia"
+    description:
+      "Keyboard mechanical 87 tombol, cocok untuk mengetik tugas dan coding.",
+    status: "Tersedia",
   },
   {
     id: "user-item-002",
@@ -89,8 +93,8 @@ const DEFAULT_USER_ITEMS = [
     condition: "Bekas bersih",
     location: "Jakarta Timur",
     description: "Tas laptop 14 inci dengan banyak kompartemen dan rain cover.",
-    status: "Tersedia"
-  }
+    status: "Tersedia",
+  },
 ];
 
 /* CORE STORAGE HELPERS - DO NOT EDIT WITHOUT COORDINATION */
@@ -144,7 +148,7 @@ function setLoggedIn(value) {
 }
 
 function getCurrentUser() {
-  return readData(STORAGE_KEYS.user, DEFAULT_USER) || DEFAULT_USER;
+  return readData(STORAGE_KEYS.user, null);
 }
 
 function setCurrentUser(user) {

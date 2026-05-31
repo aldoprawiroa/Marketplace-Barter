@@ -9,9 +9,15 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   renderAccountStatus();
 
-  document.getElementById("loginForm").addEventListener("submit", handleLoginSubmit);
-  document.getElementById("otpForm").addEventListener("submit", handleOtpSubmit);
-  document.getElementById("logoutButton").addEventListener("click", handleLogout);
+  document
+    .getElementById("loginForm")
+    .addEventListener("submit", handleLoginSubmit);
+  document
+    .getElementById("otpForm")
+    .addEventListener("submit", handleOtpSubmit);
+  document
+    .getElementById("logoutButton")
+    .addEventListener("click", handleLogout);
 });
 
 function handleLoginSubmit(event) {
@@ -23,14 +29,15 @@ function handleLoginSubmit(event) {
   var password = passwordInput.value.trim();
 
   if (!email || email.indexOf("@") === -1 || email.indexOf(".") === -1) {
-    showMessage("accountMessage", "Email belum valid. Gunakan format seperti nama@email.com.", "error");
+    showMessage(
+      "accountMessage",
+      "Email belum valid. Gunakan format seperti nama@email.com.",
+      "error",
+    );
     return;
   }
 
-  if (
-  email !== DEFAULT_USER.email ||
-  password !== DEFAULT_USER.password
-) {
+  if (email !== DEFAULT_USER.email || password !== DEFAULT_USER.password) {
     showMessage("accountMessage", "Email atau password tidak sesuai.", "error");
     return;
   }
@@ -48,18 +55,22 @@ function handleOtpSubmit(event) {
   var otpInput = document.getElementById("otpInput").value.trim();
 
   if (otpInput !== generatedOtp) {
-    showMessage("accountMessage", "OTP tidak sesuai. Periksa kembali kode yang ditampilkan.", "error");
+    showMessage(
+      "accountMessage",
+      "OTP tidak sesuai. Periksa kembali kode yang ditampilkan.",
+      "error",
+    );
     return;
   }
 
   setCurrentUser({
-  id: DEFAULT_USER.id,
-  name: DEFAULT_USER.name,
-  email: pendingEmail,
-  balance: DEFAULT_USER.balance,
-  inventory: DEFAULT_USER.inventory,
-  transactions: DEFAULT_USER.transactions
-});
+    id: DEFAULT_USER.id,
+    name: DEFAULT_USER.name,
+    email: pendingEmail,
+    balance: DEFAULT_USER.balance,
+    inventory: DEFAULT_USER.inventory,
+    transactions: DEFAULT_USER.transactions,
+  });
 
   setLoggedIn(true);
   generatedOtp = "";
@@ -67,7 +78,11 @@ function handleOtpSubmit(event) {
   document.getElementById("loginForm").reset();
   document.getElementById("otpForm").reset();
   renderAccountStatus();
-  showMessage("accountMessage", "Login berhasil. Kamu akan diarahkan ke katalog.", "success");
+  showMessage(
+    "accountMessage",
+    "Login berhasil. Kamu akan diarahkan ke katalog.",
+    "success",
+  );
 
   setTimeout(function () {
     window.location.href = "index.html";
@@ -83,21 +98,35 @@ function handleLogout() {
   generatedOtp = "";
   pendingEmail = "";
   renderAccountStatus();
-  showMessage("accountMessage", "Logout berhasil. Status akun kembali menjadi belum login.", "success");
+  showMessage(
+    "accountMessage",
+    "Logout berhasil. Status akun kembali menjadi belum login.",
+    "success",
+  );
 }
 
 function renderAccountStatus() {
   var user = getCurrentUser();
   var loginStatus = document.getElementById("loginStatus");
   var balanceText = document.getElementById("balanceText");
+  var logoutButton = document.getElementById("logoutButton");
+  var loginForm = document.getElementById("loginForm");
+  var otpForm = document.getElementById("otpForm");
 
   if (isLoggedIn() && user) {
     loginStatus.textContent =
       "Login sebagai " + user.name + " (" + user.email + ")";
+
+    logoutButton.classList.remove("hidden");
+    loginForm.classList.add("hidden");
+    otpForm.classList.add("hidden");
   } else {
     loginStatus.textContent = "Belum login";
+
+    logoutButton.classList.add("hidden");
+    loginForm.classList.remove("hidden");
+    otpForm.classList.add("hidden");
   }
 
-  balanceText.textContent =
-    "Saldo: " + formatRupiah(getBalance());
+  balanceText.textContent = "Saldo: " + formatRupiah(getBalance());
 }
