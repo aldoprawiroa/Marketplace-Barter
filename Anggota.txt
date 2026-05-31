@@ -1,0 +1,41 @@
+Kelompok 1
+
+1. Aldo Prawiro Akbar
+   NIM: 13242520007
+   Role: Katalog & Search
+   Tugas:
+   - Mengelola halaman index.html.
+   - Mengelola logika pencarian dan filter di js/catalog.js.
+   - Menjaga dokumentasi utama di README.md.
+
+2. Abdil Fawasta Rasyadan
+   NIM: 13242520013
+   Role: Akun & Login
+   Tugas:
+   - Mengelola halaman login.html.
+   - Mengelola simulasi login, OTP, status akun, dan logout di js/account.js.
+   - Mengelola bagian data user di js/data.js.
+
+3. Faiz Abdan Nirwana
+   NIM: 13242520018
+   Role: Swap & Checkout
+   Tugas:
+   - Mengelola halaman swap.html.
+   - Mengelola perhitungan checkout, saldo, dan transaksi di js/swap.js.
+   - Berkoordinasi pada helper transaksi di js/data.js.
+
+4. Ibrahim
+   NIM: 13242520019
+   Role: Upload & Inventaris
+   Tugas:
+   - Mengelola halaman upload.html.
+   - Mengelola upload barang, preview gambar, dan inventaris di js/upload.js.
+   - Mengelola bagian data barang user di js/data.js.
+
+5. Indra Nur Wahyu Saputra
+   NIM: 13242520026
+   Role: Tracking & Profil
+   Tugas:
+   - Mengelola halaman track.html.
+   - Mengelola ringkasan profil, filter transaksi, dan reset demo di js/track.js.
+   - Mengelola file Anggota.txt.

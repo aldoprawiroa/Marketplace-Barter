@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SwapSpace - Tracking</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- INDRA NUR WAHYU SAPUTRA - TRACKING & PROFIL -->
+  <header class="site-header">
+    <div class="container header-content">
+      <a class="brand" href="index.html">SwapSpace</a>
+      <nav class="main-nav" aria-label="Navigasi utama">
+        <a href="index.html">Katalog</a>
+        <a href="login.html">Login</a>
+        <a href="upload.html">Upload</a>
+        <a href="swap.html">Swap</a>
+        <a class="active" href="track.html">Tracking</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page">
+    <section class="page-heading">
+      <p class="eyebrow">Profil & Tracking</p>
+      <h1>Pantau transaksi swap</h1>
+      <p>Lihat saldo, jumlah barang inventaris, dan status transaksi yang sudah diajukan.</p>
+    </section>
+
+    <section class="summary-grid" aria-label="Ringkasan profil">
+      <article class="summary-card">
+        <span>Nama Profil</span>
+        <strong id="profileName">Mahasiswa Demo</strong>
+      </article>
+      <article class="summary-card">
+        <span>Saldo</span>
+        <strong id="profileBalance">Rp0</strong>
+      </article>
+      <article class="summary-card">
+        <span>Barang Saya</span>
+        <strong id="profileItemCount">0</strong>
+      </article>
+      <article class="summary-card">
+        <span>Transaksi</span>
+        <strong id="profileTransactionCount">0</strong>
+      </article>
+    </section>
+
+    <section class="toolbar tracking-toolbar" aria-label="Filter transaksi">
+      <div class="form-group">
+        <label for="transactionFilter">Filter status</label>
+        <select id="transactionFilter">
+          <option value="all">Semua status</option>
+          <option value="Pending">Pending</option>
+          <option value="Berhasil">Berhasil</option>
+          <option value="Gagal">Gagal</option>
+        </select>
+      </div>
+      <button id="resetDemoButton" class="button danger" type="button">Reset Demo</button>
+    </section>
+
+    <section id="transactionList" class="transaction-list" aria-label="Daftar transaksi"></section>
+  </main>
+
+  <footer class="site-footer">
+    <p>SwapSpace - Simulasi barter barang mahasiswa berbasis localStorage.</p>
+  </footer>
+
+  <script src="js/utils.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/track.js"></script>
+</body>
+</html>

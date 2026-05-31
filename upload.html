@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SwapSpace - Upload Barang</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- IBRAHIM - UPLOAD & INVENTARIS -->
+  <header class="site-header">
+    <div class="container header-content">
+      <a class="brand" href="index.html">SwapSpace</a>
+      <nav class="main-nav" aria-label="Navigasi utama">
+        <a href="index.html">Katalog</a>
+        <a href="login.html">Login</a>
+        <a class="active" href="upload.html">Upload</a>
+        <a href="swap.html">Swap</a>
+        <a href="track.html">Tracking</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page">
+    <section class="page-heading">
+      <p class="eyebrow">Inventaris</p>
+      <h1>Upload barang milik kamu</h1>
+      <p>Barang yang diunggah akan tersimpan di localStorage dan bisa dipakai sebagai penawaran swap.</p>
+    </section>
+
+    <section class="two-column upload-layout">
+      <div class="panel">
+        <h2>Form Upload</h2>
+        <form id="uploadForm" class="form-stack">
+          <div class="form-group">
+            <label for="itemName">Nama barang</label>
+            <input type="text" id="itemName" required>
+          </div>
+          <div class="form-group">
+            <label for="itemCategory">Kategori</label>
+            <select id="itemCategory" required>
+              <option value="">Pilih kategori</option>
+              <option value="Elektronik">Elektronik</option>
+              <option value="Fashion">Fashion</option>
+              <option value="Olahraga">Olahraga</option>
+              <option value="Perabot">Perabot</option>
+              <option value="Aksesoris">Aksesoris</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="itemPrice">Estimasi harga</label>
+            <input type="number" id="itemPrice" min="10000" step="1000" required>
+          </div>
+          <div class="form-group">
+            <label for="itemCondition">Kondisi</label>
+            <input type="text" id="itemCondition" placeholder="Contoh: Bekas mulus" required>
+          </div>
+          <div class="form-group">
+            <label for="itemLocation">Lokasi</label>
+            <input type="text" id="itemLocation" placeholder="Contoh: Depok" required>
+          </div>
+          <div class="form-group">
+            <label for="itemDescription">Deskripsi</label>
+            <textarea id="itemDescription" rows="4" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="itemImage">Foto barang</label>
+            <input type="file" id="itemImage" accept="image/*" required>
+          </div>
+          <div id="imagePreview" class="image-preview">Preview gambar akan muncul di sini.</div>
+          <button type="submit" class="button primary">Simpan Barang</button>
+        </form>
+      </div>
+
+      <aside class="panel">
+        <h2>Inventaris Saya</h2>
+        <div id="inventoryList" class="inventory-list"></div>
+      </aside>
+    </section>
+
+    <div id="uploadMessage" class="message" role="status" aria-live="polite"></div>
+  </main>
+
+  <footer class="site-footer">
+    <p>SwapSpace - Simulasi barter barang mahasiswa berbasis localStorage.</p>
+  </footer>
+
+  <script src="js/utils.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/upload.js"></script>
+</body>
+</html>
