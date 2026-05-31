@@ -4,6 +4,9 @@ var generatedOtp = "";
 var pendingEmail = "";
 
 document.addEventListener("DOMContentLoaded", function () {
+  if (isLoggedIn()) {
+    renderAccountStatus();
+  }
   renderAccountStatus();
 
   document.getElementById("loginForm").addEventListener("submit", handleLoginSubmit);
@@ -24,13 +27,17 @@ function handleLoginSubmit(event) {
     return;
   }
 
-  if (password.length < 6) {
-    showMessage("accountMessage", "Password minimal 6 karakter.", "error");
+  if (
+  email !== DEFAULT_USER.email ||
+  password !== DEFAULT_USER.password
+) {
+    showMessage("accountMessage", "Email atau password tidak sesuai.", "error");
     return;
   }
 
   pendingEmail = email;
   generatedOtp = String(Math.floor(100000 + Math.random() * 900000));
+  document.getElementById("otpInput").focus();
   document.getElementById("otpForm").classList.remove("hidden");
   showMessage("accountMessage", "OTP simulasi kamu: " + generatedOtp, "info");
 }
@@ -46,10 +53,19 @@ function handleOtpSubmit(event) {
   }
 
   setCurrentUser({
-    name: DEFAULT_USER.name,
-    email: pendingEmail
-  });
+  id: DEFAULT_USER.id,
+  name: DEFAULT_USER.name,
+  email: pendingEmail,
+  balance: DEFAULT_USER.balance,
+  inventory: DEFAULT_USER.inventory,
+  transactions: DEFAULT_USER.transactions
+});
+
   setLoggedIn(true);
+  generatedOtp = "";
+  document.getElementById("otpForm").classList.add("hidden");
+  document.getElementById("loginForm").reset();
+  document.getElementById("otpForm").reset();
   renderAccountStatus();
   showMessage("accountMessage", "Login berhasil. Kamu akan diarahkan ke katalog.", "success");
 
@@ -60,6 +76,12 @@ function handleOtpSubmit(event) {
 
 function handleLogout() {
   setLoggedIn(false);
+  setCurrentUser(null);
+  document.getElementById("otpForm").classList.add("hidden");
+  document.getElementById("loginForm").reset();
+  document.getElementById("otpForm").reset();
+  generatedOtp = "";
+  pendingEmail = "";
   renderAccountStatus();
   showMessage("accountMessage", "Logout berhasil. Status akun kembali menjadi belum login.", "success");
 }
@@ -69,11 +91,13 @@ function renderAccountStatus() {
   var loginStatus = document.getElementById("loginStatus");
   var balanceText = document.getElementById("balanceText");
 
-  if (isLoggedIn()) {
-    loginStatus.textContent = "Login sebagai " + user.name + " (" + user.email + ")";
+  if (isLoggedIn() && user) {
+    loginStatus.textContent =
+      "Login sebagai " + user.name + " (" + user.email + ")";
   } else {
     loginStatus.textContent = "Belum login";
   }
 
-  balanceText.textContent = "Saldo: " + formatRupiah(getBalance());
+  balanceText.textContent =
+    "Saldo: " + formatRupiah(getBalance());
 }
