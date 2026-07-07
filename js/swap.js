@@ -14,6 +14,15 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   selectedTargetItem = getSelectedItem();
+  
+  if (!selectedTargetItem) {
+    showMessage("swapMessage", "Pilih barang dari katalog terlebih dahulu. Mengalihkan...", "info");
+    setTimeout(function () {
+      window.location.href = "index.html";
+    }, 1500);
+    return;
+  }
+  
   renderSelectedItem();
   renderUserItemOptions();
   updateCheckoutSummary();
@@ -35,93 +44,80 @@ function renderSelectedItem() {
     "<p>" + escapeHTML(selectedTargetItem.category) + " - " + escapeHTML(selectedTargetItem.condition) + "</p>",
     "<p>" + escapeHTML(selectedTargetItem.location) + "</p>",
     "<strong>" + formatRupiah(selectedTargetItem.price) + "</strong>",
-    "<p>" + escapeHTML(selectedTargetItem.description) + "</p>",
-    "</article>"
+    '</article>'
   ].join("");
 }
 
 function renderUserItemOptions() {
-  var userItemOptions = document.getElementById("userItemOptions");
+  var userItemOptionsBox = document.getElementById("userItemOptions");
   var userItems = getUserItems();
 
-  userItemOptions.innerHTML = "";
-
-  if (userItems.length === 0) {
-    userItemOptions.innerHTML = '<div class="empty-state">Inventaris kosong. Upload barang terlebih dahulu.</div>';
+  if (!userItems || userItems.length === 0) {
+    userItemOptionsBox.innerHTML = '<div class="empty-state">Kamu belum memiliki barang. Silakan <a href="upload.html">upload barang</a> terlebih dahulu.</div>';
     return;
   }
 
+  var optionsHTML = [];
   userItems.forEach(function (item) {
-    var label = document.createElement("label");
-    label.className = "radio-option";
-    label.innerHTML = [
+    optionsHTML.push(
+      '<label class="radio-card">',
       '<input type="radio" name="offeredItem" value="' + escapeHTML(item.id) + '">',
-      "<span>",
-      "<strong>" + escapeHTML(item.name) + "</strong><br>",
-      escapeHTML(item.category) + " - " + escapeHTML(item.condition) + "<br>",
-      formatRupiah(item.price),
-      "</span>"
-    ].join("");
+      '<div class="radio-content">',
+      '<strong>' + escapeHTML(item.name) + '</strong>',
+      '<p>' + formatRupiah(item.price) + '</p>',
+      '</div>',
+      '</label>'
+    );
+  });
 
-    label.querySelector("input").addEventListener("change", function () {
-      selectedOfferedItem = item;
+  userItemOptionsBox.innerHTML = optionsHTML.join("");
+
+  var radioButtons = userItemOptionsBox.querySelectorAll('input[name="offeredItem"]');
+  for (var i = 0; i < radioButtons.length; i++) {
+    radioButtons[i].addEventListener("change", function (event) {
+      var selectedId = event.target.value;
+      selectedOfferedItem = userItems.find(function(item) {
+        return item.id === selectedId;
+      });
       updateCheckoutSummary();
     });
-
-    userItemOptions.appendChild(label);
-  });
-}
-
-function calculateCheckout() {
-  if (!selectedTargetItem || !selectedOfferedItem) {
-    return null;
   }
-
-  var difference = selectedTargetItem.price - selectedOfferedItem.price;
-  var serviceFee = 10000;
-  var shippingFee = 15000;
-  var totalPayment = Math.max(difference, 0) + serviceFee + shippingFee;
-
-  return {
-    difference: difference,
-    serviceFee: serviceFee,
-    shippingFee: shippingFee,
-    totalPayment: totalPayment
-  };
 }
 
 function updateCheckoutSummary() {
-  var checkoutSummary = document.getElementById("checkoutSummary");
+  var summaryBox = document.getElementById("checkoutSummary");
   var submitButton = document.getElementById("submitSwapButton");
+
+  if (!selectedTargetItem || !selectedOfferedItem) {
+    summaryBox.innerHTML = '<div class="empty-state">Pilih barang penawaran kamu untuk melihat ringkasan.</div>';
+    submitButton.disabled = true;
+    return;
+  }
+
+  var priceDifference = selectedTargetItem.price - selectedOfferedItem.price;
+  var finalDifference = Math.max(priceDifference, 0);
+  
+  var serviceFee = 10000;
+  var shippingFee = 15000;
+  var totalPayment = finalDifference + serviceFee + shippingFee;
   var balance = getBalance();
+  var canPay = balance >= totalPayment;
 
-  checkoutValues = calculateCheckout();
-  submitButton.disabled = true;
+  checkoutValues = {
+    totalPayment: totalPayment
+  };
 
-  if (!selectedTargetItem) {
-    checkoutSummary.innerHTML = '<div class="empty-state">Pilih barang dari katalog untuk membuat ringkasan checkout.</div>';
-    return;
-  }
-
-  if (!selectedOfferedItem) {
-    checkoutSummary.innerHTML = '<div class="empty-state">Pilih satu barang penawaran untuk menghitung total pembayaran.</div>';
-    return;
-  }
-
-  var canPay = balance >= checkoutValues.totalPayment;
-
-  checkoutSummary.innerHTML = [
-    createCheckoutRow("Barang tujuan", selectedTargetItem.name),
-    createCheckoutRow("Barang penawaran", selectedOfferedItem.name),
-    createCheckoutRow("Selisih harga", formatRupiah(Math.max(checkoutValues.difference, 0))),
-    createCheckoutRow("Biaya layanan", formatRupiah(checkoutValues.serviceFee)),
-    createCheckoutRow("Ongkir simulasi", formatRupiah(checkoutValues.shippingFee)),
+  summaryBox.innerHTML = [
+    createCheckoutRow("Selisih harga", formatRupiah(finalDifference)),
+    createCheckoutRow("Biaya layanan", formatRupiah(serviceFee)),
+    createCheckoutRow("Ongkos kirim", formatRupiah(shippingFee)),
     createCheckoutRow("Total pembayaran", formatRupiah(checkoutValues.totalPayment)),
     createCheckoutRow("Saldo kamu", formatRupiah(balance))
   ].join("");
 
   if (!canPay) {
     showMessage("swapMessage", "Saldo tidak cukup untuk menyelesaikan pengajuan swap ini.", "error");
+    submitButton.disabled = true;
     return;
   }
 
@@ -155,10 +151,18 @@ function handleSubmitSwap() {
 
   setBalance(getBalance() - checkoutValues.totalPayment);
   addTransaction(transaction);
-  localStorage.removeItem(STORAGE_KEYS.selectedItem);
-  showMessage("swapMessage", "Pengajuan swap berhasil dibuat.", "success");
+  
+  var currentUserItems = getUserItems();
+  var updatedUserItems = currentUserItems.filter(function(item) {
+    return item.id !== selectedOfferedItem.id;
+  });
+  saveUserItems(updatedUserItems);
 
+  localStorage.removeItem(STORAGE_KEYS.selectedItem);
+
+  showMessage("swapMessage", "Pengajuan swap berhasil! Mengalihkan ke tracking...", "success");
+  
   setTimeout(function () {
     window.location.href = "track.html";
-  }, 800);
+  }, 1500);
 }

@@ -1,74 +1,107 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SwapSpace - Tracking</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <!-- INDRA NUR WAHYU SAPUTRA - TRACKING & PROFIL -->
-  <header class="site-header">
-    <div class="container header-content">
-      <a class="brand" href="index.html">SwapSpace</a>
-      <nav class="main-nav" aria-label="Navigasi utama">
-        <a href="index.html">Katalog</a>
-        <a href="login.html">Login</a>
-        <a href="upload.html">Upload</a>
-        <a href="swap.html">Swap</a>
-        <a class="active" href="track.html">Tracking</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="container page">
-    <section class="page-heading">
-      <p class="eyebrow">Profil & Tracking</p>
-      <h1>Pantau transaksi swap</h1>
-      <p>Lihat saldo, jumlah barang inventaris, dan status transaksi yang sudah diajukan.</p>
-    </section>
-
-    <section class="summary-grid" aria-label="Ringkasan profil">
-      <article class="summary-card">
-        <span>Nama Profil</span>
-        <strong id="profileName">Mahasiswa Demo</strong>
-      </article>
-      <article class="summary-card">
-        <span>Saldo</span>
-        <strong id="profileBalance">Rp0</strong>
-      </article>
-      <article class="summary-card">
-        <span>Barang Saya</span>
-        <strong id="profileItemCount">0</strong>
-      </article>
-      <article class="summary-card">
-        <span>Transaksi</span>
-        <strong id="profileTransactionCount">0</strong>
-      </article>
-    </section>
-
-    <section class="toolbar tracking-toolbar" aria-label="Filter transaksi">
-      <div class="form-group">
-        <label for="transactionFilter">Filter status</label>
-        <select id="transactionFilter">
-          <option value="all">Semua status</option>
-          <option value="Pending">Pending</option>
-          <option value="Berhasil">Berhasil</option>
-          <option value="Gagal">Gagal</option>
-        </select>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SwapSpace - Tracking</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- INDRA - TRACKING & PEMANTAUAN -->
+    <header class="site-header">
+      <div class="container header-content">
+        <a class="brand" href="index.html">SwapSpace</a>
+        <nav class="main-nav" aria-label="Navigasi utama">
+          <a href="index.html">Katalog</a>
+          <a href="login.html">Login</a>
+          <a href="upload.html">Upload</a>
+          <a href="swap.html">Swap</a>
+          <a class="active" href="track.html">Tracking</a>
+        </nav>
       </div>
-      <button id="resetDemoButton" class="button danger" type="button">Reset Demo</button>
-    </section>
+    </header>
 
-    <section id="transactionList" class="transaction-list" aria-label="Daftar transaksi"></section>
-  </main>
+    <main class="container page">
+      <section class="page-heading">
+        <p class="eyebrow">SwapTrack</p>
+        <h1>Lacak status transaksi swap</h1>
+        <p>
+          Pantau transaksi barter dari tahap menunggu konfirmasi, berhasil,
+          sampai dibatalkan.
+        </p>
+      </section>
 
-  <footer class="site-footer">
-    <p>SwapSpace - Simulasi barter barang mahasiswa berbasis localStorage.</p>
-  </footer>
+      <section
+        id="profile-summary"
+        class="summary-grid"
+        aria-label="Ringkasan transaksi"
+      ></section>
 
-  <script src="js/utils.js"></script>
-  <script src="js/data.js"></script>
-  <script src="js/track.js"></script>
-</body>
+      <section
+        class="panel tracking-toolbar"
+        aria-label="Filter tracking transaksi"
+      >
+        <div
+          class="filter-group"
+          role="group"
+          aria-label="Filter status transaksi"
+        >
+          <button type="button" class="filter-btn" data-filter="all">
+            Semua
+          </button>
+          <button type="button" class="filter-btn" data-filter="pending">
+            Menunggu
+          </button>
+          <button type="button" class="filter-btn" data-filter="success">
+            Sukses
+          </button>
+          <button type="button" class="filter-btn" data-filter="cancelled">
+            Dibatalkan
+          </button>
+        </div>
+
+        <div class="tracking-actions">
+          <div class="form-group search-group">
+            <label for="search-input">Cari transaksi</label>
+            <input
+              type="search"
+              id="search-input"
+              placeholder="Cari barang atau kode swap"
+            />
+          </div>
+          <button id="resetButton" type="button" class="button secondary">
+            Reset Demo
+          </button>
+        </div>
+      </section>
+
+      <section class="panel tracking-panel" aria-label="Daftar transaksi swap">
+        <div class="table-wrapper">
+          <table class="tracking-table">
+            <thead>
+              <tr>
+                <th>Kode</th>
+                <th>Barang Tujuan</th>
+                <th>Barang Penawaran</th>
+                <th>Selisih</th>
+                <th>Status</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="transaction-list"></tbody>
+          </table>
+        </div>
+
+        <div id="empty-state" class="empty-state hidden">
+          Belum ada transaksi ditemukan.
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>SwapSpace - Simulasi barter barang mahasiswa berbasis localStorage.</p>
+    </footer>
+
+    <script src="js/track.js"></script>
+  </body>
 </html>

@@ -1,5 +1,13 @@
 /* IBRAHIM - UPLOAD & INVENTARIS */
 
+const uploadForm = document.getElementById("uploadForm");
+const itemImage = document.getElementById("itemImage");
+const imagePreview = document.getElementById("imagePreview");
+const inventoryList = document.getElementById("inventoryList");
+const uploadMessage = document.getElementById("uploadMessage");
+
+
+
 var selectedImageData = "";
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -60,7 +68,10 @@ function handleUploadSubmit(event) {
     showMessage("uploadMessage", "File foto harus berupa gambar.", "error");
     return;
   }
-
+  if (!selectedImageData) {
+  showMessage("uploadMessage", "Preview gambar belum siap.", "error");
+  return;
+  }
   var item = {
     id: createId("user-item"),
     name: name,
@@ -69,7 +80,8 @@ function handleUploadSubmit(event) {
     condition: condition,
     location: location,
     description: description,
-    imageData: selectedImageData
+    imageData: selectedImageData,
+    status: "Tersedia"
   };
 
   addUserItem(item);
@@ -81,6 +93,7 @@ function handleUploadSubmit(event) {
 }
 
 function renderInventoryList() {
+
   var inventoryList = document.getElementById("inventoryList");
   var items = getUserItems();
 
@@ -91,16 +104,40 @@ function renderInventoryList() {
     return;
   }
 
-  items.forEach(function (item) {
-    var card = document.createElement("article");
-    card.className = "inventory-item";
-    card.innerHTML = [
-      "<h3>" + escapeHTML(item.name) + "</h3>",
-      "<p>" + escapeHTML(item.category) + " - " + escapeHTML(item.condition) + "</p>",
-      "<p>" + escapeHTML(item.location) + "</p>",
-      "<strong>" + formatRupiah(item.price) + "</strong>",
-      "<p>" + escapeHTML(item.description) + "</p>"
-    ].join("");
-    inventoryList.appendChild(card);
+items.forEach(function (item) {
+  var card = document.createElement("article");
+  card.className = "inventory-item";
+
+  card.innerHTML = [
+    item.imageData
+      ? '<img src="' + item.imageData + '" alt="' + escapeHTML(item.name) + '" class="inventory-image">'
+      : "",
+    "<h3>" + escapeHTML(item.name) + "</h3>",
+    "<p>" + escapeHTML(item.category) + " - " + escapeHTML(item.condition) + "</p>",
+    "<p>" + escapeHTML(item.location) + "</p>",
+    '<span class="badge available">' + escapeHTML(item.status) + "</span>",
+    "<strong>Harga: " + formatRupiah(item.price) + "</strong>",
+    "<p>" + escapeHTML(item.description) + "</p>",
+    "<small>ID Barang: " + escapeHTML(item.id) + "</small>",
+    '<button class="button danger" onclick="deleteItem(\'' + item.id + '\')">Hapus</button>'
+  ].join("");
+
+ inventoryList.appendChild(card);
   });
+}
+function deleteItem(itemId) {
+  if (!confirm("Yakin ingin menghapus barang ini?")) {
+    return;
+  }
+  var items = getUserItems();
+
+  var filteredItems = items.filter(function (item) {
+    return item.id !== itemId;
+  });
+
+  saveUserItems(filteredItems);
+
+  renderInventoryList();
+
+  showMessage("uploadMessage", "Barang berhasil dihapus.", "success");
 }
