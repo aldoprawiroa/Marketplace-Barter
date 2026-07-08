@@ -1,0 +1,93 @@
+/* variables.css */
+:root {
+  /* Brand Colors */
+  --color-primary: #007bff;
+  --color-secondary: #6c757d;
+  --color-success: #28a745;
+  --color-warning: #ffc107;
+  --color-danger: #dc3545;
+  --color-info: #17a2b8;
+
+  /* Neutral Colors (50-900) */
+  --color-neutral-50: #f8f9fa;
+  --color-neutral-100: #f1f3f5;
+  --color-neutral-200: #e9ecef;
+  --color-neutral-300: #dee2e6;
+  --color-neutral-400: #ced4da;
+  --color-neutral-500: #adb5bd;
+  --color-neutral-600: #6c757d;
+  --color-neutral-700: #495057;
+  --color-neutral-800: #343a40;
+  --color-neutral-900: #212529;
+
+  /* Background, Surface, Text, Border */
+  --color-background: #ffffff;
+  --color-surface: #f8f9fa;
+  --color-text: #212529;
+  --color-border: #dee2e6;
+
+  /* Spacing (4-64px) */
+  --spacing-4: 0.25rem;  /* 4px */
+  --spacing-8: 0.5rem;   /* 8px */
+  --spacing-12: 0.75rem; /* 12px */
+  --spacing-16: 1rem;    /* 16px */
+  --spacing-20: 1.25rem; /* 20px */
+  --spacing-24: 1.5rem;  /* 24px */
+  --spacing-32: 2rem;    /* 32px */
+  --spacing-48: 3rem;    /* 48px */
+  --spacing-64: 4rem;    /* 64px */
+
+  /* Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-full: 9999px;
+
+  /* Shadow */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+  /* Transition */
+  --transition-fast: 0.15s ease-in-out;
+  --transition-normal: 0.3s ease-in-out;
+  --transition-slow: 0.5s ease-in-out;
+
+  /* Font Family */
+  --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-family-heading: inherit;
+
+  /* Typography Scale */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+
+  /* Container Width */
+  --container-width-sm: 540px;
+  --container-width-md: 720px;
+  --container-width-lg: 960px;
+  --container-width-xl: 1140px;
+
+  /* Sidebar Width */
+  --sidebar-width: 250px;
+
+  /* Header Height */
+  --header-height: 60px;
+
+  /* Footer Height */
+  --footer-height: 80px;
+
+  /* Z-index */
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1020;
+  --z-index-fixed: 1030;
+  --z-index-modal-backdrop: 1040;
+  --z-index-modal: 1050;
+  --z-index-popover: 1060;
+  --z-index-tooltip: 1070;
+}
