@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SwapSpace V2 | Profile</title>
+    <link rel="stylesheet" href="../assets/css/pages/profile.css" />
+  </head>
+  <body>
+    <main class="profile-page">
+      <header class="profile-header">
+        <div class="profile-meta-card">
+          <div class="profile-avatar">
+            <div class="avatar-placeholder">A</div>
+            <span class="verified-badge">Verified</span>
+          </div>
+          <div class="profile-title">
+            <h1 id="profileName">Loading...</h1>
+            <p id="profileLocation">Jakarta, Indonesia</p>
+            <span id="profileJoined">Joined January 2025</span>
+          </div>
+        </div>
+
+        <div class="profile-stats-card">
+          <div class="stat-card">
+            <span class="stat-value" id="itemsCount">0</span>
+            <span class="stat-label">Items</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value" id="swapsCount">0</span>
+            <span class="stat-label">Completed swaps</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value" id="ratingValue">0.0</span>
+            <span class="stat-label">Rating</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value" id="wishlistCount">0</span>
+            <span class="stat-label">Wishlist</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="profile-content">
+        <div class="card grid-col-2">
+          <div>
+            <h2>Personal information</h2>
+            <p id="profileBio">Your bio appears here once you log in. Keep it friendly and professional, then start swapping with confidence.</p>
+          </div>
+          <div class="info-list">
+            <div class="info-row"><span>Email</span><strong id="profileEmail">loading@example.com</strong></div>
+            <div class="info-row"><span>Interests</span><strong id="profileInterests">Lifestyle, Music, Tech</strong></div>
+            <div class="info-row"><span>Preferences</span><strong id="profilePreferences">Clean items, campus-safe swaps</strong></div>
+            <div class="info-row"><span>Contact</span><strong id="profileContact">demo@swapspace.id</strong></div>
+          </div>
+        </div>
+
+        <div class="card actions-card">
+          <div>
+            <h2>Security</h2>
+            <p>Secure your account with a strong password and manage your session from here.</p>
+          </div>
+          <div class="actions-row">
+            <button id="changePasswordButton" class="secondary-button">Change password</button>
+            <button id="logoutButton" class="primary-button">Logout</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="../js/data.js"></script>
+    <script src="../assets/js/pages/profile.js"></script>
+  </body>
+</html>

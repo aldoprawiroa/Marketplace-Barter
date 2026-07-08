@@ -1,25 +1,74 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
-    <link rel="stylesheet" href="../assets/css/login.css" />
+    <title>SwapSpace V2 | Login</title>
+    <link rel="stylesheet" href="../assets/css/pages/login.css" />
   </head>
   <body>
-    <div class="login-page">
-      <div class="logo-placeholder">Logo placeholder</div>
-      <div class="demo-account-placeholder">Demo account placeholder</div>
-      <form class="login-form-placeholder">
-        <h1>Login form placeholder</h1>
-        <input type="text" placeholder="Email" />
-        <input type="password" placeholder="Password" />
-        <button type="submit">Log in</button>
-      </form>
-    </div>
+    <main class="login-page">
+      <section class="login-panel">
+        <div class="brand-block">
+          <span class="brand-label">SwapSpace</span>
+          <p class="brand-tagline">Smart marketplace for fair exchange and mindful swapping.</p>
+        </div>
 
-    <main></main>
+        <div class="illustration-card">
+          <div class="illustration-splash" aria-hidden="true"></div>
+          <p class="illustration-caption">A modern, premium experience designed for students and fair swap communities.</p>
+        </div>
+      </section>
 
-    <script src="../assets/js/login.js"></script>
+      <section class="auth-panel">
+        <div class="auth-card">
+          <div class="auth-heading">
+            <div class="logo-mark">SS</div>
+            <div>
+              <h1>Welcome back</h1>
+              <p>Sign in to access your dashboard, listings, and swap activity.</p>
+            </div>
+          </div>
+
+          <form id="loginForm" class="auth-form" novalidate>
+            <div class="form-group">
+              <label for="emailInput">Email</label>
+              <input id="emailInput" name="email" type="email" autocomplete="username" placeholder="you@example.com" />
+              <p class="input-error" id="emailError"></p>
+            </div>
+
+            <div class="form-group">
+              <label for="passwordInput">Password</label>
+              <input id="passwordInput" name="password" type="password" autocomplete="current-password" placeholder="••••••••" />
+              <p class="input-error" id="passwordError"></p>
+            </div>
+
+            <div class="form-row">
+              <label class="checkbox-label">
+                <input id="rememberInput" type="checkbox" />
+                <span>Remember me</span>
+              </label>
+              <a class="link-button" href="#">Forgot password?</a>
+            </div>
+
+            <button id="loginButton" type="submit" class="primary-button" disabled>Login</button>
+            <button id="demoButton" type="button" class="secondary-button">Use Demo Account</button>
+
+            <div class="divider"><span>or</span></div>
+
+            <p class="alt-action">
+              New here? <a class="link-button" href="#">Create an account</a>
+            </p>
+          </form>
+        </div>
+
+        <footer class="login-footer">
+          <p>Built for a clean, professional login experience that feels friendly and secure.</p>
+        </footer>
+      </section>
+    </main>
+
+    <script src="../js/data.js"></script>
+    <script src="../assets/js/pages/login.js"></script>
   </body>
 </html>
