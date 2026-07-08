@@ -3,14 +3,110 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="SwapSpace detailed listing view for premium item swaps." />
     <title>SwapSpace V2 | Detail</title>
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/detail.css" />
+    <link rel="stylesheet" href="../assets/css/core/global.css" />
+    <link rel="stylesheet" href="../assets/css/pages/detail.css" />
   </head>
   <body>
-    <main></main>
-    <!-- TODO: Implement detail page content -->
-    <script src="../js/utils.js"></script>
-    <script src="../js/detail.js"></script>
+    <header class="site-header">
+      <div class="container header-content">
+        <a class="brand" href="../index.html">SwapSpace</a>
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="../index.html">Home</a>
+          <a href="marketplace.html" class="active">Marketplace</a>
+          <a href="tracking.html">Tracking</a>
+          <a href="profile.html">Profile</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page detail-page">
+      <section class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="marketplace.html">Marketplace</a>
+          <span>/</span>
+          <span id="breadcrumb-name">Listing</span>
+        </nav>
+
+        <div class="detail-grid">
+          <section class="panel gallery-card">
+            <div class="main-image" id="product-image"></div>
+            <div class="thumb-row" id="thumb-row"></div>
+          </section>
+
+          <section class="panel product-info-card">
+            <div class="product-header">
+              <div>
+                <p class="eyebrow">Featured swap</p>
+                <h1 id="product-title">Item title</h1>
+              </div>
+              <span class="swap-score-pill" id="product-score">SwapScore 0</span>
+            </div>
+
+            <div class="meta-group">
+              <span class="badge badge-category" id="product-category">Category</span>
+              <span class="badge badge-condition" id="product-condition">Condition</span>
+            </div>
+
+            <div class="owner-meta">
+              <span id="product-owner">Owner</span>
+              <span id="product-location">Location</span>
+            </div>
+
+            <p class="description" id="product-description"></p>
+
+            <div class="specs-card">
+              <h3>Specifications</h3>
+              <ul id="spec-list"></ul>
+            </div>
+
+            <div class="action-row">
+              <button class="button primary" id="swap-button" type="button">Request swap</button>
+              <button class="button secondary" id="wishlist-button" type="button">♡ Add to wishlist</button>
+            </div>
+          </section>
+        </div>
+
+        <div class="detail-bottom-grid">
+          <section class="panel owner-card">
+            <div class="owner-card-head">
+              <div class="avatar" id="owner-avatar">A</div>
+              <div>
+                <h3 id="owner-name">Owner Name</h3>
+                <p id="owner-rating">⭐ 4.9 rating</p>
+              </div>
+            </div>
+            <div class="owner-stats">
+              <div>
+                <strong id="owner-swaps">0</strong>
+                <span>Completed swaps</span>
+              </div>
+              <div>
+                <strong>100%</strong>
+                <span>Verified</span>
+              </div>
+            </div>
+            <button class="button secondary" type="button">Message owner</button>
+          </section>
+
+          <section class="panel similar-section">
+            <div class="section-heading">
+              <h2>Similar items</h2>
+              <p>Curated picks in the same category.</p>
+            </div>
+            <div class="similar-grid" id="similar-grid"></div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <p>SwapSpace © 2026 • Fair swaps, verified people, premium experiences.</p>
+      </div>
+    </footer>
+
+    <script src="../assets/js/pages/detail.js"></script>
   </body>
 </html>

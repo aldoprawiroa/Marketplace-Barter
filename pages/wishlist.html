@@ -4,26 +4,55 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SwapSpace - Wishlist</title>
-    <link rel="stylesheet" href="../css/wishlist.css" />
+    <link rel="stylesheet" href="../assets/css/pages/wishlist.css" />
   </head>
   <body>
     <header class="site-header">
       <div class="container header-content">
         <a class="brand" href="../index.html">SwapSpace</a>
+        <nav class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="history.html">History</a>
+          <a class="active" href="wishlist.html">Wishlist</a>
+          <a href="tracking.html">Tracking</a>
+        </nav>
       </div>
     </header>
 
     <main class="container page">
-      <section class="page-heading">
-        <h1>Wishlist</h1>
-        <p>Boilerplate page for wishlist.</p>
+      <section class="hero-card">
+        <div>
+          <h1>Wishlist</h1>
+          <p>Keep your desired swaps and discover new matching items.</p>
+        </div>
+      </section>
+
+      <section class="top-bar">
+        <input id="wishlistSearch" type="search" placeholder="Search wishlist" />
+        <select id="categoryFilter">
+          <option value="All">All Categories</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Home">Home</option>
+          <option value="Sports">Sports</option>
+          <option value="Audio">Audio</option>
+          <option value="Furniture">Furniture</option>
+          <option value="Travel">Travel</option>
+          <option value="Office">Office</option>
+        </select>
+      </section>
+
+      <section class="grid" id="wishlistGrid"></section>
+
+      <section class="recommended">
+        <h3>Recommended For You</h3>
+        <div class="list" id="recommendedList"></div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <p>SwapSpace</p>
+      <p>SwapSpace • Curated wishlist</p>
     </footer>
 
-    <script src="../js/wishlist.js"></script>
+    <script src="../assets/js/pages/wishlist.js"></script>
   </body>
 </html>

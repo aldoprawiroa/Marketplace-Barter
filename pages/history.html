@@ -4,26 +4,70 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SwapSpace - History</title>
-    <link rel="stylesheet" href="../css/history.css" />
+    <link rel="stylesheet" href="../assets/css/pages/history.css" />
   </head>
   <body>
     <header class="site-header">
       <div class="container header-content">
         <a class="brand" href="../index.html">SwapSpace</a>
+        <nav class="nav-links">
+          <a href="../index.html">Home</a>
+          <a class="active" href="history.html">History</a>
+          <a href="wishlist.html">Wishlist</a>
+          <a href="tracking.html">Tracking</a>
+        </nav>
       </div>
     </header>
 
     <main class="container page">
-      <section class="page-heading">
-        <h1>History</h1>
-        <p>Boilerplate page for history.</p>
+      <section class="hero-card">
+        <div>
+          <h1>Swap History</h1>
+          <p>Review your completed, cancelled, and pending exchanges.</p>
+        </div>
       </section>
+
+      <section class="stats-grid">
+        <div class="stat-card"><div class="label">Completed Swaps</div><div class="value" id="completedCount">0</div></div>
+        <div class="stat-card"><div class="label">Cancelled</div><div class="value" id="cancelledCount">0</div></div>
+        <div class="stat-card"><div class="label">Pending</div><div class="value" id="pendingCount">0</div></div>
+        <div class="stat-card"><div class="label">Success Rate</div><div class="value" id="successRate">0%</div></div>
+      </section>
+
+      <section class="controls">
+        <input id="historySearch" type="search" placeholder="Search history" />
+        <select id="statusFilter">
+          <option value="All">All Status</option>
+          <option value="Completed">Completed</option>
+          <option value="Cancelled">Cancelled</option>
+          <option value="Pending">Pending</option>
+        </select>
+      </section>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Item</th>
+              <th>Partner</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Type</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody id="historyTableBody"></tbody>
+        </table>
+      </div>
+
+      <section class="cards-mobile" id="historyCards"></section>
     </main>
 
     <footer class="site-footer">
-      <p>SwapSpace</p>
+      <p>SwapSpace • Your exchange timeline</p>
     </footer>
 
-    <script src="../js/history.js"></script>
+    <script src="../assets/js/pages/history.js"></script>
   </body>
 </html>

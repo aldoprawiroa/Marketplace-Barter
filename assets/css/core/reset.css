@@ -1,0 +1,66 @@
+/* reset.css */
+
+/* box-sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* margin, padding */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* body */
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-family-base);
+}
+
+/* img */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* button */
+button {
+  font: inherit;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+/* input, textarea */
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+/* table */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* ul */
+ul,
+ol {
+  list-style: none;
+}
+
+/* a */
+a {
+  text-decoration: none;
+  color: inherit;
+}

@@ -4,26 +4,68 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SwapSpace - Tracking</title>
-    <link rel="stylesheet" href="../css/tracking.css" />
+    <link rel="stylesheet" href="../assets/css/pages/tracking.css" />
   </head>
   <body>
     <header class="site-header">
       <div class="container header-content">
         <a class="brand" href="../index.html">SwapSpace</a>
+        <nav class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="history.html">History</a>
+          <a href="wishlist.html">Wishlist</a>
+          <a class="active" href="tracking.html">Tracking</a>
+        </nav>
       </div>
     </header>
 
     <main class="container page">
-      <section class="page-heading">
-        <h1>Tracking</h1>
-        <p>Boilerplate page for tracking.</p>
+      <section class="hero-card">
+        <div>
+          <h1>Shipment Tracking</h1>
+          <p>Monitor the progress of your latest swap deliveries.</p>
+        </div>
+        <div class="status-pill" id="statusPill">Preparing Item</div>
+      </section>
+
+      <section class="search-card card">
+        <input id="trackingSearch" type="search" placeholder="Search by shipment ID, item, or category" />
+      </section>
+
+      <section class="tracking-grid">
+        <div class="card panel">
+          <h3>Shipment Timeline</h3>
+          <h2 class="shipment-title" id="shipmentTitle">Vintage Camera</h2>
+          <p id="shipmentSummary">Tracking SW-2048 • Electronics shipped via FedEx</p>
+          <ul class="timeline" id="timelineList"></ul>
+        </div>
+
+        <div class="card panel status-card">
+          <h3>Current Status</h3>
+          <div id="currentStatus"></div>
+          <div class="small-list">
+            <div>
+              <strong>Shipping Information</strong>
+              <div class="meta-list" id="shipmentMeta"></div>
+            </div>
+            <div>
+              <strong>Estimated Arrival</strong>
+              <div class="value" id="arrivalValue">Today, 16:30</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card panel" style="margin-top:1rem;">
+        <h3>Tracking History</h3>
+        <div class="history-list" id="historyList"></div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <p>SwapSpace</p>
+      <p>SwapSpace • Premium exchange tracking</p>
     </footer>
 
-    <script src="../js/tracking.js"></script>
+    <script src="../assets/js/pages/tracking.js"></script>
   </body>
 </html>

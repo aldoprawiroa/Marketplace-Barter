@@ -1,16 +1,140 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SwapSpace V2 | Dashboard</title>
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/dashboard.css" />
-  </head>
-  <body>
-    <main></main>
-    <!-- TODO: Implement dashboard page content -->
-    <script src="../js/utils.js"></script>
-    <script src="../js/dashboard.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SwapSpace Dashboard — Manage your listings, swaps, and activity in one place.">
+  <title>Dashboard — SwapSpace</title>
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="../assets/css/core/global.css">
+  <!-- Page CSS -->
+  <link rel="stylesheet" href="../assets/css/pages/dashboard.css">
+</head>
+<body>
+
+  <div class="dashboard">
+
+    <!-- ============================================================
+         Top Navigation
+         ============================================================ -->
+    <nav class="dashboard-nav" id="dashboard-nav">
+      <div class="dashboard-nav-inner">
+        <a href="landing.html" class="dashboard-nav-logo">
+          <div class="dashboard-nav-logo-icon">S</div>
+          SwapSpace
+        </a>
+
+        <div class="dashboard-nav-links" id="dashboard-nav-links">
+          <a href="dashboard.html" class="active">Dashboard</a>
+          <a href="marketplace.html">Marketplace</a>
+          <a href="inventory.html">Inventory</a>
+          <a href="tracking.html">Tracking</a>
+          <a href="history.html">History</a>
+        </div>
+
+        <div class="dashboard-nav-right">
+          <div class="dashboard-nav-notifications" id="dashboard-notifications-toggle" title="Notifications">
+            &#x1F514;
+            <span class="notification-badge-count" id="notification-count">3</span>
+          </div>
+          <div class="dashboard-nav-avatar" id="dashboard-avatar" title="Profile">A</div>
+          <button class="dashboard-nav-toggle" id="dashboard-nav-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ============================================================
+         Main Content
+         ============================================================ -->
+    <main class="dashboard-main">
+      <div class="dashboard-content">
+
+        <!-- Greeting -->
+        <div class="dashboard-greeting" id="dashboard-greeting">
+          <h1>Good morning, Aldo &#x1F44B;</h1>
+          <p>Here's what's happening with your SwapSpace account today.</p>
+        </div>
+
+        <!-- Summary Cards -->
+        <div class="summary-cards" id="summary-cards">
+          <!-- Rendered by JS -->
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions" id="quick-actions">
+          <!-- Rendered by JS -->
+        </div>
+
+        <!-- Two Column Grid -->
+        <div class="dashboard-grid">
+          <!-- Recent Listings -->
+          <div class="dashboard-panel" id="panel-listings">
+            <div class="panel-header">
+              <span class="panel-title">Recent Listings</span>
+              <a href="inventory.html" class="panel-action">View All</a>
+            </div>
+            <div class="panel-body" id="recent-listings">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
+          <!-- Notifications -->
+          <div class="dashboard-panel" id="panel-notifications">
+            <div class="panel-header">
+              <span class="panel-title">Notifications</span>
+              <span class="panel-action" id="clear-notifications">Clear All</span>
+            </div>
+            <div class="panel-body" id="notifications-list" style="padding:0;">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Second Row Grid -->
+        <div class="dashboard-grid">
+          <!-- Recent Swaps (Timeline) -->
+          <div class="dashboard-panel" id="panel-swaps">
+            <div class="panel-header">
+              <span class="panel-title">Recent Activity</span>
+              <a href="history.html" class="panel-action">View All</a>
+            </div>
+            <div class="panel-body" id="activity-timeline">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
+          <!-- Wishlist / Stats -->
+          <div class="dashboard-panel" id="panel-wishlist">
+            <div class="panel-header">
+              <span class="panel-title">Wishlist Items</span>
+              <a href="wishlist.html" class="panel-action">View All</a>
+            </div>
+            <div class="panel-body" id="wishlist-preview">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- ============================================================
+         Footer
+         ============================================================ -->
+    <footer class="dashboard-footer" id="dashboard-footer">
+      &copy; 2026 SwapSpace. All rights reserved.
+    </footer>
+
+  </div>
+
+  <!-- Core JS -->
+  <script src="../assets/js/core/global.js"></script>
+  <!-- Page JS -->
+  <script src="../assets/js/pages/dashboard.js"></script>
+</body>
 </html>

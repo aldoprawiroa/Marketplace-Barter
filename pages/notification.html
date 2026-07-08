@@ -4,26 +4,50 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SwapSpace - Notifications</title>
-    <link rel="stylesheet" href="../css/notification.css" />
+    <link rel="stylesheet" href="../assets/css/pages/notification.css" />
   </head>
   <body>
     <header class="site-header">
       <div class="container header-content">
         <a class="brand" href="../index.html">SwapSpace</a>
+        <nav class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="history.html">History</a>
+          <a href="wishlist.html">Wishlist</a>
+          <a href="tracking.html">Tracking</a>
+        </nav>
       </div>
     </header>
 
     <main class="container page">
-      <section class="page-heading">
-        <h1>Notifications</h1>
-        <p>Boilerplate page for notifications.</p>
+      <section class="hero-card">
+        <div>
+          <h1>Notifications</h1>
+          <p>Your latest swap updates and system events.</p>
+        </div>
+        <button class="controls" id="markAllRead" style="padding:0.7rem 1rem;">Mark all read</button>
       </section>
+
+      <section class="controls">
+        <select id="notificationFilter">
+          <option value="All">All Types</option>
+          <option value="Swap Request">Swap Request</option>
+          <option value="Swap Accepted">Swap Accepted</option>
+          <option value="Swap Rejected">Swap Rejected</option>
+          <option value="Wishlist Update">Wishlist Update</option>
+          <option value="New Item">New Item</option>
+          <option value="System">System</option>
+        </select>
+        <button class="active">Summary: <span id="summaryText">0 unread • 0 total</span></button>
+      </section>
+
+      <section class="list" id="notificationList"></section>
     </main>
 
     <footer class="site-footer">
-      <p>SwapSpace</p>
+      <p>SwapSpace • Stay notified</p>
     </footer>
 
-    <script src="../js/notification.js"></script>
+    <script src="../assets/js/pages/notification.js"></script>
   </body>
 </html>
