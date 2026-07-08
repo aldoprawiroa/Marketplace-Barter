@@ -3,14 +3,105 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="SwapSpace premium marketplace with curated swap listings and smart filters." />
     <title>SwapSpace V2 | Marketplace</title>
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/marketplace.css" />
+    <link rel="stylesheet" href="../assets/css/core/global.css" />
+    <link rel="stylesheet" href="../assets/css/pages/marketplace.css" />
   </head>
   <body>
-    <main></main>
-    <!-- TODO: Implement marketplace page content -->
-    <script src="../js/utils.js"></script>
-    <script src="../js/marketplace.js"></script>
+    <header class="site-header">
+      <div class="container header-content">
+        <a class="brand" href="../index.html">SwapSpace</a>
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="../index.html">Home</a>
+          <a href="marketplace.html" class="active">Marketplace</a>
+          <a href="tracking.html">Tracking</a>
+          <a href="profile.html">Profile</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page marketplace-page">
+      <section class="container">
+        <div class="page-heading">
+          <p class="eyebrow">Premium marketplace</p>
+          <h1>Discover curated swaps</h1>
+          <p>Explore verified listings, filter by condition and category, and find fair exchanges that feel effortless.</p>
+        </div>
+
+        <section class="marketplace-hero panel">
+          <div class="hero-copy">
+            <span class="hero-badge">Featured this week</span>
+            <h2>Modern gear, thoughtful trades.</h2>
+            <p>Browse high-swap-score items across electronics, furniture, gaming, and more in a calm, premium marketplace.</p>
+            <a class="button primary" href="#product-grid">Browse listings</a>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <strong>4.9/5</strong>
+              <span>Verified listings</span>
+            </div>
+            <div>
+              <strong>98%</strong>
+              <span>Positive feedback</span>
+            </div>
+            <div>
+              <strong>24h</strong>
+              <span>Average response</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="toolbar panel" aria-label="Marketplace controls">
+          <div class="search-row">
+            <label class="search-field" for="search-input">
+              <span class="search-icon">🔎</span>
+              <input id="search-input" type="search" placeholder="Search items..." />
+            </label>
+            <button class="button secondary filter-button" id="filter-toggle" type="button">Filters</button>
+          </div>
+          <div class="toolbar-actions">
+            <label class="select-field" for="sort-select">
+              <span>Sort</span>
+              <select id="sort-select">
+                <option value="newest">Newest</option>
+                <option value="popular">Popular</option>
+                <option value="score">Highest SwapScore</option>
+                <option value="az">A-Z</option>
+              </select>
+            </label>
+          </div>
+        </section>
+
+        <section class="filter-panel panel" id="filter-panel" hidden>
+          <div class="filter-group">
+            <h3>Condition</h3>
+            <div class="filter-options" id="condition-options"></div>
+          </div>
+        </section>
+
+        <section class="chip-section" aria-label="Category filters">
+          <div class="chip-group" id="category-chips"></div>
+        </section>
+
+        <section class="results-bar">
+          <div>
+            <h2>Available items</h2>
+            <p id="results-summary">Showing 0 items</p>
+          </div>
+        </section>
+
+        <section id="product-grid" class="product-grid" aria-live="polite"></section>
+        <nav id="pagination" class="pagination" aria-label="Pagination"></nav>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <p>SwapSpace © 2026 • Fair swaps, verified people, premium experiences.</p>
+      </div>
+    </footer>
+
+    <script src="../assets/js/pages/marketplace.js"></script>
   </body>
 </html>

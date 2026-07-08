@@ -1,0 +1,19 @@
+/* Base styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+}
+
+/* Layout */
+header,
+main,
+footer {
+  padding: 1rem;
+}
+
+/* Typography */
+h1,
+h2 {
+  margin: 0 0 0.5rem;
+}
