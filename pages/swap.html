@@ -3,28 +3,123 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Swap Module</title>
+    <title>Swap Negotiation | SwapSpace</title>
     <link rel="stylesheet" href="../assets/css/swap.css" />
   </head>
   <body>
-    <header class="page-header">
+    <header class="topbar">
+      <div class="brand">
+        <a href="../index.html">SwapSpace</a>
+      </div>
       <nav aria-label="Primary navigation">
         <a href="../index.html">Home</a>
+        <a href="inventory.html">Inventory</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="profile.html">Profile</a>
       </nav>
     </header>
 
-    <main>
-      <section class="swap-section" aria-labelledby="swap-title">
-        <h1 id="swap-title">Swap</h1>
-        <p>TODO</p>
-        <form class="swap-form">
-          <label for="swap-input">TODO</label>
-          <input id="swap-input" name="swap-input" type="text" />
-          <button type="submit">TODO</button>
-        </form>
+    <main class="swap-shell">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Home</a>
+        <span>/</span>
+        <a href="inventory.html">Inventory</a>
+        <span>/</span>
+        <span>Negotiation</span>
+      </nav>
+
+      <section class="hero-card" aria-labelledby="swap-title">
+        <div>
+          <p class="eyebrow">Premium swap negotiation</p>
+          <h1 id="swap-title">Review the trade before you commit.</h1>
+          <p class="subtext">Compare value, discuss preferences, and finalize the exchange in one polished view.</p>
+        </div>
+        <div class="hero-pill" id="swap-status-pill">Awaiting proposal</div>
+      </section>
+
+      <section class="swap-grid" aria-label="Swap items">
+        <article class="swap-card">
+          <div class="card-heading">
+            <h2>Your Item</h2>
+            <span class="badge badge-soft">Primary</span>
+          </div>
+          <div class="item-preview">
+            <div class="item-image">Image Placeholder</div>
+            <div class="item-copy">
+              <h3>Vintage Camera</h3>
+              <p>Condition: Excellent</p>
+              <p>Estimated Value: $320</p>
+              <p>SwapScore: 93</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="swap-card">
+          <div class="card-heading">
+            <h2>Partner Item</h2>
+            <span class="badge badge-soft">Counteroffer</span>
+          </div>
+          <div class="item-preview">
+            <div class="item-image">Image Placeholder</div>
+            <div class="item-copy">
+              <h3>Mechanical Keyboard</h3>
+              <p>Condition: Good</p>
+              <p>Estimated Value: $240</p>
+              <p>SwapScore: 87</p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="detail-grid">
+        <article class="detail-card">
+          <div class="card-heading">
+            <h2>Swap Summary</h2>
+            <span class="badge">Live</span>
+          </div>
+          <ul class="summary-list">
+            <li><span>Difference</span><strong id="summary-difference">+$80</strong></li>
+            <li><span>Status</span><strong id="summary-status">Awaiting proposal</strong></li>
+            <li><span>Recommendation</span><strong id="summary-recommendation">Strong match for a balanced exchange.</strong></li>
+          </ul>
+        </article>
+
+        <article class="detail-card">
+          <div class="card-heading">
+            <h2>Chat Preview</h2>
+            <span class="badge badge-soft">6 messages</span>
+          </div>
+          <div class="chat-list">
+            <div class="chat-bubble partner">I’m interested in your camera. Would you prefer a keyboard or a headset?</div>
+            <div class="chat-bubble me">The keyboard sounds perfect. I’d love to keep the trade fair and simple.</div>
+            <div class="chat-bubble partner">That works. I can add a small accessory to balance the value.</div>
+            <div class="chat-bubble me">Perfect. I’m happy to proceed if the value is close.</div>
+            <div class="chat-bubble partner">The estimated difference is about $80, which feels reasonable.</div>
+            <div class="chat-bubble me">Excellent. Let’s lock in the details and confirm the agreement.</div>
+          </div>
+        </article>
+      </section>
+
+      <section class="detail-card agreement-card">
+        <label class="agreement" for="agreement-checkbox">
+          <input id="agreement-checkbox" type="checkbox">
+          <span>I agree to the exchange terms.</span>
+        </label>
+        <p class="helper-text" id="agreement-helper">Please confirm the terms to continue.</p>
+      </section>
+
+      <section class="action-row">
+        <button class="btn btn-secondary" id="cancel-swap" type="button">Cancel</button>
+        <button class="btn btn-outline" id="send-proposal" type="button">Send Proposal</button>
+        <button class="btn btn-primary" id="accept-swap" type="button">Accept Swap</button>
+        <button class="btn btn-danger" id="reject-swap" type="button">Reject Swap</button>
       </section>
     </main>
 
-    <script src="../assets/js/swap.js" defer></script>
+    <footer class="footer">
+      <p>SwapSpace V2 • Frontend-only experience.</p>
+    </footer>
+
+    <script src="../assets/js/swap.js"></script>
   </body>
 </html>

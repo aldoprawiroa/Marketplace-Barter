@@ -3,19 +3,136 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inventory</title>
+  <title>Inventory | SwapSpace</title>
   <link rel="stylesheet" href="../assets/css/inventory.css">
 </head>
 <body>
-  <header>
-    <h1>Inventory</h1>
+  <header class="topbar">
+    <div class="brand">
+      <a href="../index.html">SwapSpace</a>
+    </div>
+    <nav aria-label="Primary navigation">
+      <a href="../index.html">Home</a>
+      <a href="marketplace.html">Marketplace</a>
+      <a href="swap.html">Swap</a>
+      <a href="profile.html">Profile</a>
+    </nav>
   </header>
-  <main>
-    <section aria-labelledby="inventory-heading">
-      <h2 id="inventory-heading">Inventory</h2>
+
+  <main class="page-shell">
+    <section class="page-intro" aria-labelledby="inventory-title">
+      <div>
+        <p class="eyebrow">Inventory &amp; Swap Hub</p>
+        <h1 id="inventory-title">Manage your listings with confidence.</h1>
+        <p class="subtext">Track availability, prepare swaps, and keep your collection polished for the next exchange.</p>
+      </div>
+      <button class="btn btn-primary" id="open-upload-modal" type="button">Upload Item</button>
+    </section>
+
+    <section class="stats-grid" aria-label="Inventory statistics">
+      <article class="stat-card">
+        <span class="stat-label">Total Items</span>
+        <strong class="stat-value" data-stat="total">0</strong>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Available</span>
+        <strong class="stat-value" data-stat="available">0</strong>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">In Swap</span>
+        <strong class="stat-value" data-stat="swap">0</strong>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Completed</span>
+        <strong class="stat-value" data-stat="completed">0</strong>
+      </article>
+    </section>
+
+    <section class="control-panel" aria-label="Inventory controls">
+      <label class="search-field">
+        <span class="sr-only">Search inventory</span>
+        <input id="inventory-search" type="search" placeholder="Search by item or category">
+      </label>
+      <label class="filter-field">
+        <span class="sr-only">Filter status</span>
+        <select id="inventory-filter">
+          <option value="all">All Status</option>
+          <option value="Available">Available</option>
+          <option value="In Swap">In Swap</option>
+          <option value="Completed">Completed</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="inventory-section">
+      <div class="section-heading">
+        <h2>Inventory Grid</h2>
+        <p>8 curated dummy items ready for your next swap.</p>
+      </div>
+      <div id="inventory-grid" class="inventory-grid"></div>
+      <div id="empty-state" class="empty-state hidden">
+        <h3>No items match your filters.</h3>
+        <p>Try a different keyword or reset your search.</p>
+      </div>
     </section>
   </main>
-  <footer></footer>
+
+  <footer class="footer">
+    <p>SwapSpace V2 • Frontend-only experience.</p>
+  </footer>
+
+  <div class="modal-backdrop hidden" id="upload-modal" role="dialog" aria-modal="true" aria-labelledby="upload-modal-title">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2 id="upload-modal-title">Upload Item</h2>
+        <button class="icon-btn" id="close-upload-modal" type="button" aria-label="Close modal">×</button>
+      </div>
+      <form id="upload-form" class="upload-form">
+        <label>
+          <span>Item Name</span>
+          <input id="item-name" name="itemName" type="text" required>
+        </label>
+        <label>
+          <span>Category</span>
+          <input id="item-category" name="category" type="text" required>
+        </label>
+        <label>
+          <span>Condition</span>
+          <input id="item-condition" name="condition" type="text" required>
+        </label>
+        <label>
+          <span>Description</span>
+          <textarea id="item-description" name="description" rows="3" required></textarea>
+        </label>
+        <label>
+          <span>Swap Preference</span>
+          <input id="item-preference" name="preference" type="text" required>
+        </label>
+        <div class="image-placeholder">
+          <span>Image Placeholder</span>
+        </div>
+        <div class="modal-actions">
+          <button class="btn btn-secondary" id="cancel-upload" type="button">Cancel</button>
+          <button class="btn btn-primary" type="submit">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop hidden" id="delete-modal" role="dialog" aria-modal="true" aria-labelledby="delete-modal-title">
+    <div class="modal-card compact-card">
+      <div class="modal-header">
+        <h2 id="delete-modal-title">Delete item?</h2>
+        <button class="icon-btn" id="close-delete-modal" type="button" aria-label="Close modal">×</button>
+      </div>
+      <p class="confirm-copy">This action will remove the item from your inventory view.</p>
+      <div class="modal-actions">
+        <button class="btn btn-secondary" id="cancel-delete" type="button">Cancel</button>
+        <button class="btn btn-danger" id="confirm-delete" type="button">Delete</button>
+      </div>
+    </div>
+  </div>
+
   <script src="../assets/js/inventory.js"></script>
 </body>
 </html>
