@@ -280,6 +280,44 @@ GitHub digunakan sebagai:
 
 # Screenshots
 
+## Home
+
+Halaman utama aplikasi yang menampilkan katalog barang.
+
+![Home](img/home.png)
+
+---
+
+## Login
+
+Halaman login menggunakan autentikasi simulasi.
+
+![Login](img/Login.png)
+
+---
+
+## Upload
+
+Halaman untuk menambahkan barang milik pengguna.
+
+![Upload](img/Upload.png)
+
+---
+
+## Swap
+
+Halaman simulasi proses pertukaran barang.
+
+![Swap](img/Swap.png)
+
+---
+
+## Tracking
+
+Halaman untuk melihat status transaksi.
+
+![Tracking](img/tracking.png)
+
 ---
 
 # Functional Testing
