@@ -284,7 +284,7 @@ GitHub digunakan sebagai:
 
 Halaman utama aplikasi yang menampilkan katalog barang.
 
-![Home](img/home.png)
+![Home](img/Katalog.png)
 
 ---
 
@@ -316,7 +316,7 @@ Halaman simulasi proses pertukaran barang.
 
 Halaman untuk melihat status transaksi.
 
-![Tracking](img/tracking.png)
+![Tracking](img/Tracking.png)
 
 ---
 
